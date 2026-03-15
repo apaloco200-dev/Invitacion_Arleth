@@ -196,8 +196,8 @@
   /* ===== CROSSFADE PRINCESAS ===== */
   .crossfade-stage {
     position: relative;
-    width: 180px;
-    height: 230px;
+    width: 220px;
+    height: 300px;
     margin: 10px auto 20px;
   }
   .cf-card {
@@ -292,35 +292,55 @@
     to { --ring-angle: 360deg; }
   }
 
-  /* Cenicienta - azul */
-  .card-cinderella .card-bg {
-    background: linear-gradient(160deg, #1565C0, #42A5F5, #90CAF9);
+  /* ===== IMÁGENES REALES PRINCESAS ===== */
+  .princess-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 24px;
+    z-index: 1;
+    transition: transform 6s ease-in-out;
   }
+  .cf-card.cf-active .princess-img {
+    transform: scale(1.06);
+  }
+  .cf-card:not(.cf-active) .princess-img {
+    transform: scale(1);
+  }
+
+  /* Overlay de brillo sobre imagen */
+  .princess-overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    z-index: 2;
+    background: linear-gradient(
+      180deg,
+      rgba(0,0,0,0) 40%,
+      rgba(0,0,0,0.55) 100%
+    );
+  }
+
+  /* Efecto brillo mágico al estar activa */
+  .cf-card.cf-active .princess-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(255,215,0,0.04) 0%,
+      rgba(0,0,0,0) 40%,
+      rgba(0,0,0,0.6) 100%
+    );
+  }
+
+  /* Ring colors por princesa */
   .card-cinderella { --ring-c1: #90CAF9; --ring-c2: #FFD700; }
-
-  /* Elsa - celeste */
-  .card-elsa .card-bg {
-    background: linear-gradient(160deg, #006064, #26C6DA, #B2EBF2);
-  }
-  .card-elsa { --ring-c1: #B2EBF2; --ring-c2: #E0F7FA; }
-
-  /* Ariel - verde/teal */
-  .card-ariel .card-bg {
-    background: linear-gradient(160deg, #004D40, #00897B, #80CBC4);
-  }
-  .card-ariel { --ring-c1: #80CBC4; --ring-c2: #FF6EB4; }
-
-  /* Blancanieves - rojo/azul */
-  .card-snowwhite .card-bg {
-    background: linear-gradient(160deg, #B71C1C, #E53935, #FFB3B3);
-  }
-  .card-snowwhite { --ring-c1: #FFB3B3; --ring-c2: #FFD700; }
-
-  /* Aurora - rosa/dorado */
-  .card-aurora .card-bg {
-    background: linear-gradient(160deg, #AD1457, #F06292, #FCE4EC);
-  }
-  .card-aurora { --ring-c1: #FCE4EC; --ring-c2: #FFD700; }
+  .card-elsa       { --ring-c1: #B2EBF2; --ring-c2: #E0F7FA; }
+  .card-ariel      { --ring-c1: #80CBC4; --ring-c2: #FF6EB4; }
+  .card-snowwhite  { --ring-c1: #FFB3B3; --ring-c2: #FFD700; }
+  .card-aurora     { --ring-c1: #FCE4EC; --ring-c2: #FFD700; }
+  .card-bella      { --ring-c1: #FFE082; --ring-c2: #FF6EB4; }
 
   /* ===== SECCIÓN INFO EVENTO ===== */
   .event-section {
@@ -596,7 +616,7 @@
     .child-name { font-size: clamp(2.8rem, 8vw, 3.6rem); }
     .years-text { font-size: clamp(1rem, 3vw, 1.3rem); }
     .castle-svg { width: 220px; height: 176px; }
-    .crossfade-stage { width: 220px; height: 280px; }
+    .crossfade-stage { width: 250px; height: 340px; }
     .countdown-number { font-size: 2.4rem; }
     .countdown-box { max-width: 90px; padding: 15px 5px; }
     .event-section { margin: 10px 20px; padding: 28px 25px; }
@@ -613,7 +633,7 @@
     .subtitle-you-are-invited { font-size: 1.7rem; }
     .princess-title { font-size: 0.8rem; letter-spacing: 6px; }
     .castle-svg { width: 240px; height: 192px; }
-    .crossfade-stage { width: 240px; height: 300px; }
+    .crossfade-stage { width: 270px; height: 370px; }
     .countdown-number { font-size: 2.6rem; }
     .countdown-box { max-width: 100px; padding: 16px 8px; }
     .countdown-grid { gap: 14px; }
@@ -633,7 +653,7 @@
     .years-text { font-size: 0.95rem; letter-spacing: 1px; }
     .princess-title { font-size: 0.6rem; letter-spacing: 3px; }
     .subtitle-you-are-invited { font-size: 1.2rem; }
-    .crossfade-stage { width: 150px; height: 195px; }
+    .crossfade-stage { width: 175px; height: 240px; }
     .castle-svg { width: 160px; height: 128px; }
     .countdown-number { font-size: 1.6rem; }
     .countdown-box { padding: 10px 3px; }
@@ -652,7 +672,7 @@
   /* Móvil estándar (361px – 480px) */
   @media (min-width: 361px) and (max-width: 480px) {
     .child-name { font-size: clamp(2.6rem, 9vw, 3.2rem); }
-    .crossfade-stage { width: clamp(160px, 45vw, 180px); height: clamp(205px, 58vw, 230px); }
+    .crossfade-stage { width: clamp(180px, 55vw, 220px); height: clamp(240px, 72vw, 300px); }
   }
 </style>
 </head>
@@ -671,7 +691,7 @@
 
 <!-- AUDIO (música de princesas Disney) -->
 <audio id="princess-audio" loop>
-  <source src="https://drive.google.com/file/d/1vKs5YiuzSN6jU36DlvSPXGcT3wE226qp/view?usp=drive_link" type="audio/mpeg">
+  <source src="La Bella y la Bestia (De La Bella y la Bestia) [Versión Instrumental con Orquesta Filarmónica].mp3" type="audio/mpeg">
 </audio>
 
 <!-- CONTENIDO PRINCIPAL -->
@@ -755,51 +775,51 @@
     <div class="crossfade-stage" id="crossfade-stage">
 
       <div class="cf-card cf-active">
-        <div class="princess-card card-cinderella" style="--dance-dur:2.5s;--dance-delay:0s;--shine-dur:4s;--float-dur:4s;--float-delay:0s">
-          <div class="card-bg"></div>
+        <div class="princess-card card-ariel" style="--float-dur:4s;--float-delay:0s;--shine-dur:4s">
+          <img class="princess-img" src="https://raw.githubusercontent.com/apaloco200-dev/Invitacion_Arleth/main/Ariel.jpeg" alt="Ariel" loading="lazy"/>
+          <div class="princess-overlay"></div>
           <div class="sparkle-ring"></div>
-          <span class="princess-emoji">👸</span>
-          <div class="princess-name">Cenicienta</div>
+          <div class="princess-name">✨ Ariel ✨</div>
           <div class="card-shimmer"></div>
         </div>
       </div>
 
       <div class="cf-card">
-        <div class="princess-card card-elsa" style="--dance-dur:2s;--dance-delay:0.3s;--shine-dur:3.5s;--float-dur:4.5s;--float-delay:0.5s">
-          <div class="card-bg"></div>
+        <div class="princess-card card-aurora" style="--float-dur:4.5s;--float-delay:0.5s;--shine-dur:3.5s">
+          <img class="princess-img" src="https://raw.githubusercontent.com/apaloco200-dev/Invitacion_Arleth/main/Aurora.jpeg" alt="Aurora" loading="lazy"/>
+          <div class="princess-overlay"></div>
           <div class="sparkle-ring"></div>
-          <span class="princess-emoji">🧊</span>
-          <div class="princess-name">Elsa</div>
+          <div class="princess-name">✨ Aurora ✨</div>
           <div class="card-shimmer"></div>
         </div>
       </div>
 
       <div class="cf-card">
-        <div class="princess-card card-ariel" style="--dance-dur:2.8s;--dance-delay:0.6s;--shine-dur:5s;--float-dur:3.8s;--float-delay:1s">
-          <div class="card-bg"></div>
+        <div class="princess-card card-bella" style="--float-dur:3.8s;--float-delay:1s;--shine-dur:5s">
+          <img class="princess-img" src="https://raw.githubusercontent.com/apaloco200-dev/Invitacion_Arleth/main/Bella.jpeg" alt="Bella" loading="lazy"/>
+          <div class="princess-overlay"></div>
           <div class="sparkle-ring"></div>
-          <span class="princess-emoji">🧜‍♀️</span>
-          <div class="princess-name">Ariel</div>
+          <div class="princess-name">✨ Bella ✨</div>
           <div class="card-shimmer"></div>
         </div>
       </div>
 
       <div class="cf-card">
-        <div class="princess-card card-snowwhite" style="--dance-dur:2.3s;--dance-delay:0.9s;--shine-dur:3.8s;--float-dur:4.2s;--float-delay:1.5s">
-          <div class="card-bg"></div>
+        <div class="princess-card card-snowwhite" style="--float-dur:4.2s;--float-delay:1.5s;--shine-dur:3.8s">
+          <img class="princess-img" src="https://raw.githubusercontent.com/apaloco200-dev/Invitacion_Arleth/main/Blancanieves.jpeg" alt="Blancanieves" loading="lazy"/>
+          <div class="princess-overlay"></div>
           <div class="sparkle-ring"></div>
-          <span class="princess-emoji">🍎</span>
-          <div class="princess-name">Blancanieves</div>
+          <div class="princess-name">✨ Blancanieves ✨</div>
           <div class="card-shimmer"></div>
         </div>
       </div>
 
       <div class="cf-card">
-        <div class="princess-card card-aurora" style="--dance-dur:2.6s;--dance-delay:1.2s;--shine-dur:4.5s;--float-dur:4.8s;--float-delay:2s">
-          <div class="card-bg"></div>
+        <div class="princess-card card-elsa" style="--float-dur:4.8s;--float-delay:2s;--shine-dur:4.5s">
+          <img class="princess-img" src="https://raw.githubusercontent.com/apaloco200-dev/Invitacion_Arleth/main/Elsa.jpeg" alt="Elsa" loading="lazy"/>
+          <div class="princess-overlay"></div>
           <div class="sparkle-ring"></div>
-          <span class="princess-emoji">🌹</span>
-          <div class="princess-name">Aurora</div>
+          <div class="princess-name">✨ Elsa ✨</div>
           <div class="card-shimmer"></div>
         </div>
       </div>
