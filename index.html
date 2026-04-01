@@ -59,32 +59,7 @@
       linear-gradient(135deg, #0d0020 0%, #1a0530 30%, #0a001a 60%, #1a0030 100%);
     z-index: 0;
   }
-
-  /* ===== PARALLAX CAPAS ===== */
-  .parallax-layer-1 {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background:
-      radial-gradient(ellipse at 20% 20%, rgba(206,147,216,0.18) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 80%, rgba(79,195,247,0.15) 0%, transparent 50%);
-    transform: translateY(0px);
-    will-change: transform;
-  }
-  .parallax-layer-2 {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background:
-      radial-gradient(ellipse at 60% 30%, rgba(255,110,180,0.1) 0%, transparent 45%),
-      radial-gradient(ellipse at 30% 70%, rgba(255,215,0,0.07) 0%, transparent 40%);
-    transform: translateY(0px);
-    will-change: transform;
-  }
-
-  /* Estrellas de fondo */
+/* Estrellas de fondo */
   .stars {
     position: fixed;
     inset: 0;
@@ -736,8 +711,6 @@
 
 <!-- FONDO MÁGICO -->
 <div class="bg-magic"></div>
-<div class="parallax-layer-1" id="parallax1"></div>
-<div class="parallax-layer-2" id="parallax2"></div>
 <div class="stars" id="stars"></div>
 <div class="sparkles-container" id="sparkles"></div>
 
@@ -1410,17 +1383,6 @@ function animateFireworks() {
   animFrameId = requestAnimationFrame(animateFireworks);
 }
 
-// ===== PARALLAX AL HACER SCROLL =====
-const p1 = document.getElementById('parallax1');
-const p2 = document.getElementById('parallax2');
-const starsLayer = document.getElementById('stars');
-
-window.addEventListener('scroll', () => {
-  const sy = window.scrollY;
-  if (p1) p1.style.transform = `translateY(${sy * 0.15}px)`;
-  if (p2) p2.style.transform = `translateY(${sy * 0.28}px)`;
-  if (starsLayer) starsLayer.style.transform = `translateY(${sy * 0.08}px)`;
-}, { passive: true });
 
 // ===== PARTÍCULAS EN EL NOMBRE =====
 (function() {
