@@ -4,6 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>✨ Cumpleaños de Arleth ✨</title>
+<!-- Open Graph para preview en WhatsApp -->
+<meta property="og:title" content="🏰✨ Cumpleaños de Arleth Garcia Tablas ✨🏰"/>
+<meta property="og:description" content="🎀 ¡Estás invitada a su fiesta de 4 años de Princesas! • 16 de Mayo 2026 • 3:00 PM • Jardín LA CARRETA 👑"/>
+<meta property="og:image" content="https://raw.githubusercontent.com/apaloco200-dev/Invitacion_Arleth/main/Aurora.jpeg"/>
+<meta property="og:image:width" content="600"/>
+<meta property="og:image:height" content="800"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://apaloco200-dev.github.io/Invitacion_Arleth/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="🏰 Cumpleaños de Arleth Garcia Tablas"/>
+<meta name="twitter:description" content="🎀 Fiesta de Princesas • 16 Mayo 2026 • 3:00 PM"/>
+<meta name="twitter:image" content="https://raw.githubusercontent.com/apaloco200-dev/Invitacion_Arleth/main/Aurora.jpeg"/>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel+Decorative:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -46,6 +58,30 @@
       radial-gradient(ellipse at 50% 50%, rgba(255,110,180,0.08) 0%, transparent 70%),
       linear-gradient(135deg, #0d0020 0%, #1a0530 30%, #0a001a 60%, #1a0030 100%);
     z-index: 0;
+  }
+
+  /* ===== PARALLAX CAPAS ===== */
+  .parallax-layer-1 {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(206,147,216,0.18) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(79,195,247,0.15) 0%, transparent 50%);
+    transform: translateY(0px);
+    will-change: transform;
+  }
+  .parallax-layer-2 {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at 60% 30%, rgba(255,110,180,0.1) 0%, transparent 45%),
+      radial-gradient(ellipse at 30% 70%, rgba(255,215,0,0.07) 0%, transparent 40%);
+    transform: translateY(0px);
+    will-change: transform;
   }
 
   /* Estrellas de fondo */
@@ -101,13 +137,14 @@
   /* ===== HEADER CASTILLO ===== */
   .castle-header {
     text-align: center;
-    padding: 30px 20px 10px;
-    position: relative;
+    padding: 55px 20px 10px;
+    position: relative; overflow: visible;
   }
 
   .castle-svg {
-    width: 200px;
-    height: 160px;
+    width: 260px;
+    height: 220px;
+    overflow: visible;
     filter: drop-shadow(0 0 20px rgba(255,215,0,0.6));
     animation: castleGlow 3s ease-in-out infinite;
   }
@@ -120,6 +157,7 @@
   .main-title {
     text-align: center;
     padding: 10px 20px 5px;
+    overflow: visible;
   }
   .subtitle-you-are-invited {
     font-family: 'Great Vibes', cursive;
@@ -143,8 +181,10 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: rainbowShift 4s ease infinite;
-    line-height: 1.1;
+    line-height: 1.4;
+    padding: 8px 0 10px;
     display: block;
+    overflow: visible;
   }
   @keyframes rainbowShift {
     0% { background-position: 0% 50%; }
@@ -579,6 +619,19 @@
     text-shadow: 0 0 10px rgba(255,215,0,0.4);
   }
 
+  /* ===== PARTÍCULAS NOMBRE ===== */
+  .name-particle {
+    position: absolute;
+    pointer-events: none;
+    border-radius: 50%;
+    animation: nameParticle var(--np-dur, 1.5s) ease-out forwards;
+    z-index: 20;
+  }
+  @keyframes nameParticle {
+    0%   { transform: translate(0,0) scale(1); opacity: 1; }
+    100% { transform: translate(var(--np-x, 0px), var(--np-y, -60px)) scale(0); opacity: 0; }
+  }
+
   /* ===== ANIMACIÓN DE ENTRADA ===== */
   .fade-in {
     opacity: 0;
@@ -615,7 +668,7 @@
     .invitation { max-width: 520px; }
     .child-name { font-size: clamp(2.8rem, 8vw, 3.6rem); }
     .years-text { font-size: clamp(1rem, 3vw, 1.3rem); }
-    .castle-svg { width: 220px; height: 176px; }
+    .castle-svg { width: 280px; height: 237px; }
     .crossfade-stage { width: 250px; height: 340px; }
     .countdown-number { font-size: 2.4rem; }
     .countdown-box { max-width: 90px; padding: 15px 5px; }
@@ -632,7 +685,7 @@
     .years-text { font-size: 1.3rem; }
     .subtitle-you-are-invited { font-size: 1.7rem; }
     .princess-title { font-size: 0.8rem; letter-spacing: 6px; }
-    .castle-svg { width: 240px; height: 192px; }
+    .castle-svg { width: 300px; height: 254px; }
     .crossfade-stage { width: 270px; height: 370px; }
     .countdown-number { font-size: 2.6rem; }
     .countdown-box { max-width: 100px; padding: 16px 8px; }
@@ -654,7 +707,7 @@
     .princess-title { font-size: 0.6rem; letter-spacing: 3px; }
     .subtitle-you-are-invited { font-size: 1.2rem; }
     .crossfade-stage { width: 175px; height: 240px; }
-    .castle-svg { width: 160px; height: 128px; }
+    .castle-svg { width: 210px; height: 178px; }
     .countdown-number { font-size: 1.6rem; }
     .countdown-box { padding: 10px 3px; }
     .countdown-label { font-size: 0.48rem; }
@@ -683,6 +736,8 @@
 
 <!-- FONDO MÁGICO -->
 <div class="bg-magic"></div>
+<div class="parallax-layer-1" id="parallax1"></div>
+<div class="parallax-layer-2" id="parallax2"></div>
 <div class="stars" id="stars"></div>
 <div class="sparkles-container" id="sparkles"></div>
 
@@ -699,69 +754,164 @@
 
   <!-- CASTILLO -->
   <div class="castle-header fade-in" style="--delay:0.3s">
-    <svg class="castle-svg" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
-      <!-- Torrecillas laterales -->
-      <rect x="5" y="50" width="25" height="80" fill="#9B59B6" rx="2"/>
-      <rect x="5" y="40" width="25" height="15" fill="#8E44AD" rx="2"/>
-      <polygon points="5,40 17,15 30,40" fill="#FFD700"/>
-      <rect x="7" y="12" width="5" height="8" fill="#FFD700"/>
-      <rect x="18" y="10" width="5" height="10" fill="#FFD700"/>
-      
-      <rect x="170" y="50" width="25" height="80" fill="#9B59B6" rx="2"/>
-      <rect x="170" y="40" width="25" height="15" fill="#8E44AD" rx="2"/>
-      <polygon points="170,40 182,15 195,40" fill="#FFD700"/>
-      <rect x="172" y="12" width="5" height="8" fill="#FFD700"/>
-      <rect x="183" y="10" width="5" height="10" fill="#FFD700"/>
-      
-      <!-- Torre central grande -->
-      <rect x="70" y="30" width="60" height="100" fill="#8E44AD" rx="3"/>
-      <rect x="65" y="20" width="70" height="15" fill="#7D3C98" rx="2"/>
-      <polygon points="65,20 100,0 135,20" fill="#FFD700"/>
-      <rect x="90" y="0" width="8" height="12" fill="#FFD700"/>
-      <!-- Bandera -->
-      <line x1="94" y1="0" x2="94" y2="-10" stroke="#FFD700" stroke-width="1.5"/>
-      <polygon points="94,-10 105,-5 94,-1" fill="#FF6EB4"/>
-      
-      <!-- Cuerpo principal -->
-      <rect x="30" y="65" width="140" height="65" fill="#7D3C98" rx="3"/>
-      <rect x="30" y="60" width="140" height="10" fill="#6C3483"/>
-      
+    <svg class="castle-svg" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="wallGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#CE93D8"/>
+          <stop offset="100%" stop-color="#6A1B9A"/>
+        </linearGradient>
+        <linearGradient id="towerGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#E040FB"/>
+          <stop offset="100%" stop-color="#7B1FA2"/>
+        </linearGradient>
+        <linearGradient id="roofGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#FFD700"/>
+          <stop offset="100%" stop-color="#FF6EB4"/>
+        </linearGradient>
+        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1a0035" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#1a0035" stop-opacity="0"/>
+        </linearGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="2.5" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="strongGlow">
+          <feGaussianBlur stdDeviation="4" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- ===== TORRES LATERALES PEQUEÑAS ===== -->
+      <!-- Torre izq pequeña -->
+      <rect x="2" y="110" width="22" height="90" fill="url(#wallGrad)" rx="2"/>
+      <rect x="2" y="100" width="22" height="14" fill="#7B1FA2" rx="1"/>
+      <!-- Almenas torre izq pequeña -->
+      <rect x="2" y="96" width="5" height="8" fill="#9C27B0" rx="1"/>
+      <rect x="10" y="96" width="5" height="8" fill="#9C27B0" rx="1"/>
+      <rect x="18" y="96" width="5" height="8" fill="#9C27B0" rx="1"/>
+      <!-- Techo torre izq pequeña -->
+      <polygon points="2,100 13,72 24,100" fill="url(#roofGrad)" filter="url(#glow)"/>
+      <line x1="13" y1="72" x2="13" y2="65" stroke="#FFD700" stroke-width="1.5"/>
+      <polygon points="13,65 20,69 13,73" fill="#FF6EB4"/>
+      <!-- Ventana -->
+      <ellipse cx="13" cy="125" rx="5" ry="7" fill="#FFD700" opacity="0.85" filter="url(#glow)"/>
+
+      <!-- Torre izq mediana -->
+      <rect x="28" y="90" width="30" height="110" fill="url(#towerGrad)" rx="2"/>
+      <rect x="28" y="78" width="30" height="16" fill="#7B1FA2" rx="1"/>
       <!-- Almenas -->
-      <rect x="30" y="55" width="10" height="12" fill="#8E44AD" rx="1"/>
-      <rect x="50" y="55" width="10" height="12" fill="#8E44AD" rx="1"/>
-      <rect x="70" y="55" width="10" height="12" fill="#8E44AD" rx="1"/>
-      <rect x="120" y="55" width="10" height="12" fill="#8E44AD" rx="1"/>
-      <rect x="140" y="55" width="10" height="12" fill="#8E44AD" rx="1"/>
-      <rect x="160" y="55" width="10" height="12" fill="#8E44AD" rx="1"/>
-      
-      <!-- Puerta -->
-      <path d="M88,130 L88,100 Q100,88 112,100 L112,130 Z" fill="#2C1654"/>
-      
+      <rect x="28" y="73" width="7" height="10" fill="#9C27B0" rx="1"/>
+      <rect x="38" y="73" width="7" height="10" fill="#9C27B0" rx="1"/>
+      <rect x="48" y="73" width="7" height="10" fill="#9C27B0" rx="1"/>
+      <!-- Techo -->
+      <polygon points="28,78 43,45 58,78" fill="url(#roofGrad)" filter="url(#glow)"/>
+      <line x1="43" y1="45" x2="43" y2="37" stroke="#FFD700" stroke-width="1.5"/>
+      <polygon points="43,37 51,41 43,46" fill="#FF80AB"/>
       <!-- Ventanas -->
-      <ellipse cx="77" cy="90" rx="8" ry="10" fill="#FFD700" opacity="0.8"/>
-      <ellipse cx="123" cy="90" rx="8" ry="10" fill="#FFD700" opacity="0.8"/>
-      
-      <!-- Brillos del castillo -->
-      <circle cx="100" cy="5" r="3" fill="white" opacity="0.9"/>
-      <circle cx="17" cy="18" r="2" fill="white" opacity="0.8"/>
-      <circle cx="183" cy="18" r="2" fill="white" opacity="0.8"/>
-      
-      <!-- Estrellas alrededor -->
-      <text x="15" y="60" font-size="12" fill="#FFD700" opacity="0.8">✦</text>
-      <text x="170" y="55" font-size="10" fill="#FFD700" opacity="0.8">✦</text>
-      <text x="55" y="25" font-size="8" fill="#FF6EB4" opacity="0.9">★</text>
-      <text x="135" y="22" font-size="8" fill="#FF6EB4" opacity="0.9">★</text>
-      
-      <!-- Luna y brillos -->
-      <text x="0" y="30" font-size="16" opacity="0.6">🌙</text>
-      <text x="180" y="35" font-size="14" opacity="0.6">⭐</text>
+      <ellipse cx="43" cy="105" rx="7" ry="9" fill="#FFD700" opacity="0.85" filter="url(#glow)"/>
+      <ellipse cx="43" cy="130" rx="5" ry="6" fill="#FFD700" opacity="0.6"/>
+
+      <!-- Torre der pequeña -->
+      <rect x="236" y="110" width="22" height="90" fill="url(#wallGrad)" rx="2"/>
+      <rect x="236" y="100" width="22" height="14" fill="#7B1FA2" rx="1"/>
+      <rect x="236" y="96" width="5" height="8" fill="#9C27B0" rx="1"/>
+      <rect x="244" y="96" width="5" height="8" fill="#9C27B0" rx="1"/>
+      <rect x="252" y="96" width="5" height="8" fill="#9C27B0" rx="1"/>
+      <polygon points="236,100 247,72 258,100" fill="url(#roofGrad)" filter="url(#glow)"/>
+      <line x1="247" y1="72" x2="247" y2="65" stroke="#FFD700" stroke-width="1.5"/>
+      <polygon points="247,65 254,69 247,73" fill="#FF6EB4"/>
+      <ellipse cx="247" cy="125" rx="5" ry="7" fill="#FFD700" opacity="0.85" filter="url(#glow)"/>
+
+      <!-- Torre der mediana -->
+      <rect x="202" y="90" width="30" height="110" fill="url(#towerGrad)" rx="2"/>
+      <rect x="202" y="78" width="30" height="16" fill="#7B1FA2" rx="1"/>
+      <rect x="202" y="73" width="7" height="10" fill="#9C27B0" rx="1"/>
+      <rect x="212" y="73" width="7" height="10" fill="#9C27B0" rx="1"/>
+      <rect x="222" y="73" width="7" height="10" fill="#9C27B0" rx="1"/>
+      <polygon points="202,78 217,45 232,78" fill="url(#roofGrad)" filter="url(#glow)"/>
+      <line x1="217" y1="45" x2="217" y2="37" stroke="#FFD700" stroke-width="1.5"/>
+      <polygon points="217,37 225,41 217,46" fill="#FF80AB"/>
+      <ellipse cx="217" cy="105" rx="7" ry="9" fill="#FFD700" opacity="0.85" filter="url(#glow)"/>
+      <ellipse cx="217" cy="130" rx="5" ry="6" fill="#FFD700" opacity="0.6"/>
+
+      <!-- ===== CUERPO PRINCIPAL ===== -->
+      <rect x="58" y="120" width="144" height="100" fill="url(#wallGrad)" rx="3"/>
+      <!-- Franja decorativa -->
+      <rect x="58" y="118" width="144" height="8" fill="#7B1FA2"/>
+      <!-- Almenas cuerpo -->
+      <rect x="58" y="110" width="10" height="13" fill="#9C27B0" rx="1"/>
+      <rect x="74" y="110" width="10" height="13" fill="#9C27B0" rx="1"/>
+      <rect x="90" y="110" width="10" height="13" fill="#9C27B0" rx="1"/>
+      <rect x="106" y="110" width="10" height="13" fill="#9C27B0" rx="1"/>
+      <rect x="122" y="110" width="10" height="13" fill="#9C27B0" rx="1"/>
+      <rect x="138" y="110" width="10" height="13" fill="#9C27B0" rx="1"/>
+      <rect x="154" y="110" width="10" height="13" fill="#9C27B0" rx="1"/>
+      <rect x="170" y="110" width="10" height="13" fill="#9C27B0" rx="1"/>
+      <rect x="186" y="110" width="10" height="13" fill="#9C27B0" rx="1"/>
+
+      <!-- ===== TORRE CENTRAL GRANDE ===== -->
+      <rect x="95" y="60" width="70" height="160" fill="url(#towerGrad)" rx="3"/>
+      <rect x="90" y="48" width="80" height="18" fill="#6A1B9A" rx="2"/>
+      <!-- Almenas torre central -->
+      <rect x="90" y="40" width="11" height="14" fill="#9C27B0" rx="2"/>
+      <rect x="105" y="40" width="11" height="14" fill="#9C27B0" rx="2"/>
+      <rect x="120" y="40" width="11" height="14" fill="#9C27B0" rx="2"/>
+      <rect x="135" y="40" width="11" height="14" fill="#9C27B0" rx="2"/>
+      <rect x="150" y="40" width="11" height="14" fill="#9C27B0" rx="2"/>
+      <!-- Techo torre central -->
+      <polygon points="90,48 130,5 170,48" fill="url(#roofGrad)" filter="url(#strongGlow)"/>
+      <!-- Mástil y bandera -->
+      <line x1="130" y1="5" x2="130" y2="-5" stroke="#FFD700" stroke-width="2"/>
+      <polygon points="130,-5 148,2 130,9" fill="#FF6EB4" filter="url(#glow)"/>
+      <!-- Brillos en el techo -->
+      <circle cx="130" cy="5" r="4" fill="white" opacity="0.95" filter="url(#strongGlow)"/>
+      <circle cx="108" cy="30" r="2" fill="white" opacity="0.7"/>
+      <circle cx="152" cy="30" r="2" fill="white" opacity="0.7"/>
+
+      <!-- Ventanas torre central -->
+      <ellipse cx="130" cy="85" rx="10" ry="13" fill="#FFD700" opacity="0.9" filter="url(#glow)"/>
+      <ellipse cx="130" cy="115" rx="8" ry="10" fill="#FFD700" opacity="0.7"/>
+      <!-- Detalles ventana arco -->
+      <path d="M120,85 Q130,72 140,85" fill="none" stroke="#FFD700" stroke-width="1.5" opacity="0.5"/>
+
+      <!-- ===== PUERTA PRINCIPAL ===== -->
+      <path d="M113,220 L113,178 Q130,162 147,178 L147,220 Z" fill="#1a0035"/>
+      <path d="M115,220 L115,179 Q130,165 145,179 L145,220 Z" fill="#2a0050"/>
+      <!-- Herraje puerta -->
+      <circle cx="130" cy="195" r="3" fill="#FFD700" opacity="0.8"/>
+
+      <!-- Ventanas cuerpo principal -->
+      <ellipse cx="85" cy="148" rx="9" ry="11" fill="#FFD700" opacity="0.8" filter="url(#glow)"/>
+      <ellipse cx="175" cy="148" rx="9" ry="11" fill="#FFD700" opacity="0.8" filter="url(#glow)"/>
+      <path d="M76,148 Q85,137 94,148" fill="none" stroke="#FFD700" stroke-width="1.2" opacity="0.5"/>
+      <path d="M166,148 Q175,137 184,148" fill="none" stroke="#FFD700" stroke-width="1.2" opacity="0.5"/>
+
+      <!-- ===== DETALLES DECORATIVOS ===== -->
+      <!-- Estrellas flotantes -->
+      <circle cx="20" cy="50" r="2.5" fill="#FFD700" filter="url(#glow)" opacity="0.9"/>
+      <circle cx="240" cy="55" r="2" fill="#FFD700" filter="url(#glow)" opacity="0.9"/>
+      <circle cx="50" cy="30" r="1.5" fill="#FF80AB" opacity="0.8"/>
+      <circle cx="210" cy="35" r="1.5" fill="#FF80AB" opacity="0.8"/>
+      <circle cx="10" cy="80" r="1.8" fill="white" opacity="0.7"/>
+      <circle cx="250" cy="75" r="1.8" fill="white" opacity="0.7"/>
+
+      <!-- Destellos en forma de estrella -->
+      <path d="M35,15 L37,10 L39,15 L44,17 L39,19 L37,24 L35,19 L30,17 Z" fill="#FFD700" opacity="0.8" filter="url(#glow)"/>
+      <path d="M220,20 L222,15 L224,20 L229,22 L224,24 L222,29 L220,24 L215,22 Z" fill="#FF80AB" opacity="0.8" filter="url(#glow)"/>
+      <path d="M5,135 L6.5,131 L8,135 L12,136.5 L8,138 L6.5,142 L5,138 L1,136.5 Z" fill="#CE93D8" opacity="0.7"/>
+      <path d="M250,130 L251.5,126 L253,130 L257,131.5 L253,133 L251.5,137 L250,133 L246,131.5 Z" fill="#CE93D8" opacity="0.7"/>
+
+      <!-- Nubes de luz bajo el castillo -->
+      <ellipse cx="130" cy="218" rx="90" ry="8" fill="#9C27B0" opacity="0.25"/>
+      <ellipse cx="130" cy="218" rx="60" ry="5" fill="#E040FB" opacity="0.15"/>
     </svg>
   </div>
 
   <!-- TÍTULO -->
   <div class="main-title fade-in" style="--delay:0.5s">
     <span class="subtitle-you-are-invited">✨ Estás invitada a celebrar ✨</span>
-    <span class="child-name">Arleth Garcia Tablas</span>
+    <span class="child-name" id="child-name-text">Arleth Garcia Tablas</span>
     <span class="years-text">🎀 Sus 4 Años 🎀</span>
     <span class="princess-title">✦ Una Celebración de Princesas ✦</span>
   </div>
@@ -912,7 +1062,7 @@
   <div class="whatsapp-section fade-in" style="--delay:1.6s">
     <div class="whatsapp-title">💌 ¡Confirma tu Asistencia! 💌</div>
     <a 
-      href="https://wa.me/525545468540?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20la%20fiesta%20de%20de%20Arleth%20Garcia%20Tablas%20el%2016%20de%20mayo%20de%202026%20"
+      href="https://wa.me/525545468540?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20la%20fiesta%20de%20de%20Arleth%20Garcia%20Tablas%20el%2016%20de%20mayo%20de%202026%20🎀✨👑"
       target="_blank"
       class="whatsapp-btn"
     >
@@ -999,16 +1149,90 @@ welcomeOverlay.style.cssText = `
 `;
 welcomeOverlay.innerHTML = `
   <div style="text-align:center; padding:30px; animation: pulse 1.5s ease-in-out infinite;">
-    <div style="font-size:5rem; margin-bottom:15px;">🏰</div>
-    <div style="font-family:'Great Vibes',cursive; font-size:2.2rem; color:#FFD700;
-      text-shadow:0 0 30px rgba(255,215,0,0.9); margin-bottom:8px;">
+    <div style="margin-bottom:10px;">
+      <svg viewBox="0 0 260 230" width="180" height="155" xmlns="http://www.w3.org/2000/svg" style="overflow:visible; filter:drop-shadow(0 0 18px rgba(255,215,0,0.9)) drop-shadow(0 0 35px rgba(255,110,180,0.5));">
+        <defs>
+          <linearGradient id="wg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E040FB"/><stop offset="100%" stop-color="#6A1B9A"/></linearGradient>
+          <linearGradient id="rg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFD700"/><stop offset="100%" stop-color="#FF6EB4"/></linearGradient>
+        </defs>
+        <!-- Torres laterales pequeñas -->
+        <rect x="2" y="115" width="22" height="85" fill="url(#wg2)" rx="2"/>
+        <polygon points="2,115 13,85 24,115" fill="url(#rg2)"/>
+        <line x1="13" y1="85" x2="13" y2="77" stroke="#FFD700" stroke-width="2"/>
+        <polygon points="13,77 21,81 13,86" fill="#FF80AB"/>
+        <ellipse cx="13" cy="133" rx="5" ry="6" fill="#FFD700" opacity="0.9"/>
+        <rect x="236" y="115" width="22" height="85" fill="url(#wg2)" rx="2"/>
+        <polygon points="236,115 247,85 258,115" fill="url(#rg2)"/>
+        <line x1="247" y1="85" x2="247" y2="77" stroke="#FFD700" stroke-width="2"/>
+        <polygon points="247,77 255,81 247,86" fill="#FF80AB"/>
+        <ellipse cx="247" cy="133" rx="5" ry="6" fill="#FFD700" opacity="0.9"/>
+        <!-- Torres medianas -->
+        <rect x="28" y="95" width="30" height="105" fill="url(#wg2)" rx="2"/>
+        <rect x="28" y="82" width="30" height="16" fill="#6A1B9A" rx="1"/>
+        <rect x="28" y="75" width="7" height="10" fill="#9C27B0" rx="1"/><rect x="38" y="75" width="7" height="10" fill="#9C27B0" rx="1"/><rect x="48" y="75" width="7" height="10" fill="#9C27B0" rx="1"/>
+        <polygon points="28,82 43,48 58,82" fill="url(#rg2)"/>
+        <line x1="43" y1="48" x2="43" y2="39" stroke="#FFD700" stroke-width="1.5"/>
+        <polygon points="43,39 52,43 43,49" fill="#FF80AB"/>
+        <ellipse cx="43" cy="112" rx="7" ry="9" fill="#FFD700" opacity="0.85"/>
+        <rect x="202" y="95" width="30" height="105" fill="url(#wg2)" rx="2"/>
+        <rect x="202" y="82" width="30" height="16" fill="#6A1B9A" rx="1"/>
+        <rect x="202" y="75" width="7" height="10" fill="#9C27B0" rx="1"/><rect x="212" y="75" width="7" height="10" fill="#9C27B0" rx="1"/><rect x="222" y="75" width="7" height="10" fill="#9C27B0" rx="1"/>
+        <polygon points="202,82 217,48 232,82" fill="url(#rg2)"/>
+        <line x1="217" y1="48" x2="217" y2="39" stroke="#FFD700" stroke-width="1.5"/>
+        <polygon points="217,39 226,43 217,49" fill="#FF80AB"/>
+        <ellipse cx="217" cy="112" rx="7" ry="9" fill="#FFD700" opacity="0.85"/>
+        <!-- Cuerpo principal -->
+        <rect x="58" y="125" width="144" height="75" fill="url(#wg2)" rx="3"/>
+        <rect x="58" y="115" width="144" height="14" fill="#6A1B9A"/>
+        <rect x="60" y="109" width="9" height="11" fill="#9C27B0" rx="1"/><rect x="74" y="109" width="9" height="11" fill="#9C27B0" rx="1"/><rect x="88" y="109" width="9" height="11" fill="#9C27B0" rx="1"/><rect x="102" y="109" width="9" height="11" fill="#9C27B0" rx="1"/><rect x="116" y="109" width="9" height="11" fill="#9C27B0" rx="1"/><rect x="130" y="109" width="9" height="11" fill="#9C27B0" rx="1"/><rect x="144" y="109" width="9" height="11" fill="#9C27B0" rx="1"/><rect x="158" y="109" width="9" height="11" fill="#9C27B0" rx="1"/><rect x="172" y="109" width="9" height="11" fill="#9C27B0" rx="1"/><rect x="186" y="109" width="9" height="11" fill="#9C27B0" rx="1"/>
+        <!-- Torre central -->
+        <rect x="95" y="65" width="70" height="135" fill="url(#wg2)" rx="3"/>
+        <rect x="90" y="52" width="80" height="18" fill="#6A1B9A" rx="2"/>
+        <rect x="90" y="43" width="11" height="14" fill="#9C27B0" rx="2"/><rect x="105" y="43" width="11" height="14" fill="#9C27B0" rx="2"/><rect x="120" y="43" width="11" height="14" fill="#9C27B0" rx="2"/><rect x="135" y="43" width="11" height="14" fill="#9C27B0" rx="2"/><rect x="150" y="43" width="11" height="14" fill="#9C27B0" rx="2"/>
+        <polygon points="90,52 130,8 170,52" fill="url(#rg2)"/>
+        <circle cx="130" cy="9" r="4" fill="white" opacity="0.95"/>
+        <line x1="130" y1="9" x2="130" y2="-2" stroke="#FFD700" stroke-width="2"/>
+        <polygon points="130,-2 148,5 130,12" fill="#FF6EB4"/>
+        <!-- Ventanas torre central -->
+        <ellipse cx="130" cy="88" rx="10" ry="13" fill="#FFD700" opacity="0.9"/>
+        <ellipse cx="130" cy="118" rx="7" ry="9" fill="#FFD700" opacity="0.7"/>
+        <!-- Puerta -->
+        <path d="M113,200 L113,162 Q130,146 147,162 L147,200 Z" fill="#1a0035"/>
+        <!-- Ventanas cuerpo -->
+        <ellipse cx="85" cy="150" rx="9" ry="11" fill="#FFD700" opacity="0.8"/>
+        <ellipse cx="175" cy="150" rx="9" ry="11" fill="#FFD700" opacity="0.8"/>
+        <!-- Destellos -->
+        <path d="M20,55 L22,49 L24,55 L30,57 L24,59 L22,65 L20,59 L14,57 Z" fill="#FFD700" opacity="0.9"/>
+        <path d="M230,60 L232,54 L234,60 L240,62 L234,64 L232,70 L230,64 L224,62 Z" fill="#FF80AB" opacity="0.9"/>
+        <circle cx="10" cy="90" r="2" fill="white" opacity="0.8"/>
+        <circle cx="250" cy="85" r="2" fill="white" opacity="0.8"/>
+        <circle cx="50" cy="35" r="1.5" fill="#FFD700" opacity="0.7"/>
+        <circle cx="210" cy="38" r="1.5" fill="#FFD700" opacity="0.7"/>
+        <!-- Sombra base -->
+        <ellipse cx="130" cy="200" rx="90" ry="7" fill="#9C27B0" opacity="0.3"/>
+      </svg>
+    </div>
+    <div style="
+      font-family:'Cinzel Decorative',cursive;
+      font-size:1.5rem;
+      font-weight:700;
+      color:#00FFFF;
+      text-shadow: 0 0 15px #00FFFF, 0 0 35px #00FFFF, 0 2px 6px rgba(0,0,0,0.9);
+      letter-spacing:3px;
+      margin-bottom:10px;
+      text-transform:uppercase;">
       ✨ Toca para Abrir ✨
     </div>
-    <div style="font-family:'Great Vibes',cursive; font-size:1.4rem; color:#FF6EB4;
-      text-shadow:0 0 15px rgba(255,110,180,0.8); margin-bottom:20px;">
+    <div style="
+      font-family:'Great Vibes',cursive;
+      font-size:2rem;
+      color:#FFFDE7;
+      text-shadow: 0 0 20px #FFD700, 0 0 40px rgba(255,215,0,0.6), 0 2px 6px rgba(0,0,0,0.9);
+      margin-bottom:22px;">
       la invitación mágica
     </div>
-    <div style="font-size:2.5rem; letter-spacing:10px; animation: bounce 1s ease-in-out infinite;">
+    <div style="font-size:2.5rem; letter-spacing:10px; animation: bounce 1s ease-in-out infinite;
+      filter:drop-shadow(0 0 8px #fff);">
       👑💎👑
     </div>
   </div>
@@ -1185,6 +1409,64 @@ function animateFireworks() {
   particles.forEach(p => { p.update(); p.draw(); });
   animFrameId = requestAnimationFrame(animateFireworks);
 }
+
+// ===== PARALLAX AL HACER SCROLL =====
+const p1 = document.getElementById('parallax1');
+const p2 = document.getElementById('parallax2');
+const starsLayer = document.getElementById('stars');
+
+window.addEventListener('scroll', () => {
+  const sy = window.scrollY;
+  if (p1) p1.style.transform = `translateY(${sy * 0.15}px)`;
+  if (p2) p2.style.transform = `translateY(${sy * 0.28}px)`;
+  if (starsLayer) starsLayer.style.transform = `translateY(${sy * 0.08}px)`;
+}, { passive: true });
+
+// ===== PARTÍCULAS EN EL NOMBRE =====
+(function() {
+  const nameEl = document.getElementById('child-name-text');
+  if (!nameEl) return;
+
+  const colors = ['#FFD700','#FF6EB4','#CE93D8','#4FC3F7','#FFFFFF','#FF80AB','#FFE082','#B39DDB'];
+
+  function burst() {
+    const rect = nameEl.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2 + window.scrollY;
+    const container = nameEl.parentElement;
+    const contRect = container.getBoundingClientRect();
+
+    for (let i = 0; i < 18; i++) {
+      const p = document.createElement('div');
+      p.className = 'name-particle';
+      const size = Math.random() * 7 + 3;
+      const angle = Math.random() * Math.PI * 2;
+      const dist = Math.random() * 80 + 30;
+      const dur = Math.random() * 1 + 1;
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const px = cx - contRect.left - contRect.scrollLeft;
+      const py = cy - contRect.top + window.scrollY - window.scrollY;
+
+      p.style.cssText = `
+        width:${size}px; height:${size}px;
+        background:${color};
+        left:${rect.left - contRect.left + Math.random()*rect.width}px;
+        top:${rect.top - contRect.top + window.scrollY + Math.random()*rect.height}px;
+        --np-x:${Math.cos(angle)*dist}px;
+        --np-y:${Math.sin(angle)*dist - 40}px;
+        --np-dur:${dur}s;
+        box-shadow: 0 0 ${size}px ${color};
+      `;
+      container.style.position = 'relative';
+      container.appendChild(p);
+      setTimeout(() => p.remove(), dur * 1000 + 100);
+    }
+  }
+
+  // Burst cada 4 segundos automáticamente
+  setTimeout(burst, 1500);
+  setInterval(burst, 4000);
+})();
 
 // ===== CROSSFADE AUTOMÁTICO DE PRINCESAS =====
 (function() {
