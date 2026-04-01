@@ -1,1446 +1,206 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>✨ Cumpleaños de Arleth ✨</title>
-<!-- Open Graph para preview en WhatsApp -->
-<meta property="og:title" content="🏰✨ Cumpleaños de Arleth Garcia Tablas ✨🏰"/>
-<meta property="og:description" content="🎀 ¡Estás invitada a su fiesta de 4 años de Princesas! • 16 de Mayo 2026 • 3:00 PM • Jardín LA CARRETA 👑"/>
-<meta property="og:image" content="https://raw.githubusercontent.com/apaloco200-dev/Invitacion_Arleth/main/Aurora.jpeg"/>
-<meta property="og:image:width" content="600"/>
-<meta property="og:image:height" content="800"/>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://apaloco200-dev.github.io/Invitacion_Arleth/"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="🏰 Cumpleaños de Arleth Garcia Tablas"/>
-<meta name="twitter:description" content="🎀 Fiesta de Princesas • 16 Mayo 2026 • 3:00 PM"/>
-<meta name="twitter:image" content="https://raw.githubusercontent.com/apaloco200-dev/Invitacion_Arleth/main/Aurora.jpeg"/>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel+Decorative:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --gold: #FFD700;
-    --pink: #FF6EB4;
-    --blue: #4FC3F7;
-    --purple: #CE93D8;
-    --teal: #4DB6AC;
-    --red: #EF5350;
-    --white: #FFF8FF;
-    --dark: #1a0530;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--dark);
-    font-family: 'Lato', sans-serif;
-    color: var(--white);
-    overflow-x: hidden;
-    min-height: 100vh;
-  }
-
-  /* ===== CANVAS FUEGOS ARTIFICIALES ===== */
-  #fireworks-canvas {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 9999;
-  }
-
-  /* ===== FONDO ANIMADO ===== */
-  .bg-magic {
-    position: fixed;
-    inset: 0;
-    background: 
-      radial-gradient(ellipse at 20% 20%, rgba(206,147,216,0.15) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 80%, rgba(79,195,247,0.12) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 50%, rgba(255,110,180,0.08) 0%, transparent 70%),
-      linear-gradient(135deg, #0d0020 0%, #1a0530 30%, #0a001a 60%, #1a0030 100%);
-    z-index: 0;
-  }
-/* Estrellas de fondo */
-  .stars {
-    position: fixed;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-  }
-  .star {
-    position: absolute;
-    background: white;
-    border-radius: 50%;
-    animation: twinkle var(--d, 3s) ease-in-out infinite;
-    animation-delay: var(--delay, 0s);
-  }
-  @keyframes twinkle {
-    0%, 100% { opacity: 0.2; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.5); }
-  }
-
-  /* ===== PARTÍCULAS FLOTANTES ===== */
-  .sparkles-container {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 2;
-    overflow: hidden;
-  }
-  .sparkle {
-    position: absolute;
-    font-size: 1.2rem;
-    animation: floatUp var(--dur, 6s) ease-in-out infinite;
-    animation-delay: var(--delay, 0s);
-    opacity: 0;
-  }
-  @keyframes floatUp {
-    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 0.8; }
-    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-  }
-
-  /* ===== CONTENIDO PRINCIPAL ===== */
-  .invitation {
-    position: relative;
-    z-index: 10;
-    max-width: 480px;
-    margin: 0 auto;
-    padding: 0 0 40px;
-  }
-
-  /* ===== HEADER CASTILLO ===== */
-  .castle-header {
-    text-align: center;
-    padding: 55px 20px 10px;
-    position: relative; overflow: visible;
-  }
-
-  .castle-svg {
-    width: 260px;
-    height: 220px;
-    overflow: visible;
-    filter: drop-shadow(0 0 20px rgba(255,215,0,0.6));
-    animation: castleGlow 3s ease-in-out infinite;
-  }
-  @keyframes castleGlow {
-    0%, 100% { filter: drop-shadow(0 0 15px rgba(255,215,0,0.4)); }
-    50% { filter: drop-shadow(0 0 35px rgba(255,215,0,0.9)) drop-shadow(0 0 60px rgba(255,110,180,0.4)); }
-  }
-
-  /* ===== TÍTULO ===== */
-  .main-title {
-    text-align: center;
-    padding: 10px 20px 5px;
-    overflow: visible;
-  }
-  .subtitle-you-are-invited {
-    font-family: 'Great Vibes', cursive;
-    font-size: 1.5rem;
-    color: var(--gold);
-    text-shadow: 0 0 20px rgba(255,215,0,0.8);
-    display: block;
-    margin-bottom: 5px;
-    animation: shimmer 2s ease-in-out infinite;
-  }
-  @keyframes shimmer {
-    0%, 100% { text-shadow: 0 0 15px rgba(255,215,0,0.7); }
-    50% { text-shadow: 0 0 30px rgba(255,215,0,1), 0 0 50px rgba(255,215,0,0.5); }
-  }
-  .child-name {
-    font-family: 'Great Vibes', cursive;
-    font-size: 3.2rem;
-    background: linear-gradient(135deg, #FFD700, #FF6EB4, #CE93D8, #4FC3F7, #FFD700);
-    background-size: 300% 300%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: rainbowShift 4s ease infinite;
-    line-height: 1.4;
-    padding: 8px 0 10px;
-    display: block;
-    overflow: visible;
-  }
-  @keyframes rainbowShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-  .years-text {
-    font-family: 'Cinzel Decorative', cursive;
-    font-size: 1.2rem;
-    color: var(--pink);
-    letter-spacing: 3px;
-    text-shadow: 0 0 20px rgba(255,110,180,0.8);
-    margin-top: 5px;
-    display: block;
-  }
-  .princess-title {
-    font-family: 'Cinzel Decorative', cursive;
-    font-size: 0.75rem;
-    color: var(--purple);
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    margin-top: 8px;
-    display: block;
-    opacity: 0.9;
-  }
-
-  /* ===== DECORACIÓN DIVISORA ===== */
-  .divider {
-    text-align: center;
-    font-size: 1.8rem;
-    letter-spacing: 8px;
-    margin: 10px 0;
-    animation: shimmer 2s ease-in-out infinite;
-  }
-
-  /* ===== TARJETAS DE PRINCESAS ===== */
-  .princesses-section {
-    padding: 15px 15px;
-  }
-  .princesses-title {
-    font-family: 'Cinzel Decorative', cursive;
-    text-align: center;
-    font-size: 0.7rem;
-    letter-spacing: 4px;
-    color: var(--gold);
-    margin-bottom: 15px;
-    text-transform: uppercase;
-  }
-  /* ===== CROSSFADE PRINCESAS ===== */
-  .crossfade-stage {
-    position: relative;
-    width: 220px;
-    height: 300px;
-    margin: 10px auto 20px;
-  }
-  .cf-card {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1.2s ease;
-  }
-  .cf-card.cf-active {
-    opacity: 1;
-  }
-
-  .princess-card {
-    width: 100%;
-    height: 100%;
-    border-radius: 24px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 0 25px rgba(255,215,0,0.25);
-    animation: princessFloat var(--float-dur, 4s) ease-in-out infinite;
-    animation-delay: var(--float-delay, 0s);
-  }
-  @keyframes princessFloat {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
-  }
-
-  .princess-card .card-bg {
-    position: absolute;
-    inset: 0;
-    opacity: 0.9;
-  }
-  .princess-card .princess-emoji {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -60%);
-    font-size: 4.5rem;
-    z-index: 2;
-    filter: drop-shadow(0 3px 8px rgba(0,0,0,0.5));
-    animation: dancePrincess var(--dance-dur, 2s) ease-in-out infinite;
-    animation-delay: var(--dance-delay, 0s);
-  }
-  @keyframes dancePrincess {
-    0%, 100% { transform: translate(-50%, -60%) rotate(-5deg) scale(1); }
-    25% { transform: translate(-50%, -65%) rotate(0deg) scale(1.05); }
-    50% { transform: translate(-50%, -60%) rotate(5deg) scale(1); }
-    75% { transform: translate(-50%, -55%) rotate(0deg) scale(1.03); }
-  }
-  .princess-card .princess-name {
-    position: absolute;
-    bottom: 0;
-    left: 0; right: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,0.7));
-    padding: 20px 5px 8px;
-    text-align: center;
-    font-family: 'Great Vibes', cursive;
-    font-size: 1.1rem;
-    color: white;
-    z-index: 3;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.8);
-  }
-  .princess-card .card-shimmer {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
-    background-size: 200% 200%;
-    animation: cardShine var(--shine-dur, 3s) ease-in-out infinite;
-    z-index: 4;
-  }
-  @keyframes cardShine {
-    0% { background-position: -100% -100%; }
-    100% { background-position: 200% 200%; }
-  }
-  .princess-card .sparkle-ring {
-    position: absolute;
-    inset: -2px;
-    border-radius: 22px;
-    padding: 2px;
-    background: linear-gradient(var(--ring-angle, 0deg), var(--ring-c1, #FFD700), var(--ring-c2, #FF6EB4));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    animation: rotateBorder 3s linear infinite;
-    z-index: 5;
-  }
-  @keyframes rotateBorder {
-    from { --ring-angle: 0deg; }
-    to { --ring-angle: 360deg; }
-  }
-
-  /* ===== IMÁGENES REALES PRINCESAS ===== */
-  .princess-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top center;
-    border-radius: 24px;
-    z-index: 1;
-    transition: transform 6s ease-in-out;
-  }
-  .cf-card.cf-active .princess-img {
-    transform: scale(1.06);
-  }
-  .cf-card:not(.cf-active) .princess-img {
-    transform: scale(1);
-  }
-
-  /* Overlay de brillo sobre imagen */
-  .princess-overlay {
-    position: absolute;
-    inset: 0;
-    border-radius: 24px;
-    z-index: 2;
-    background: linear-gradient(
-      180deg,
-      rgba(0,0,0,0) 40%,
-      rgba(0,0,0,0.55) 100%
-    );
-  }
-
-  /* Efecto brillo mágico al estar activa */
-  .cf-card.cf-active .princess-overlay {
-    background: linear-gradient(
-      180deg,
-      rgba(255,215,0,0.04) 0%,
-      rgba(0,0,0,0) 40%,
-      rgba(0,0,0,0.6) 100%
-    );
-  }
-
-  /* Ring colors por princesa */
-  .card-cinderella { --ring-c1: #90CAF9; --ring-c2: #FFD700; }
-  .card-elsa       { --ring-c1: #B2EBF2; --ring-c2: #E0F7FA; }
-  .card-ariel      { --ring-c1: #80CBC4; --ring-c2: #FF6EB4; }
-  .card-snowwhite  { --ring-c1: #FFB3B3; --ring-c2: #FFD700; }
-  .card-aurora     { --ring-c1: #FCE4EC; --ring-c2: #FFD700; }
-  .card-bella      { --ring-c1: #FFE082; --ring-c2: #FF6EB4; }
-
-  /* ===== SECCIÓN INFO EVENTO ===== */
-  .event-section {
-    margin: 10px 15px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,215,0,0.2);
-    border-radius: 24px;
-    padding: 25px 20px;
-    backdrop-filter: blur(10px);
-    position: relative;
-    overflow: hidden;
-  }
-  .event-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255,110,180,0.05), rgba(79,195,247,0.05));
-    border-radius: 24px;
-  }
-  .event-section h3 {
-    font-family: 'Cinzel Decorative', cursive;
-    font-size: 0.65rem;
-    letter-spacing: 5px;
-    color: var(--gold);
-    text-align: center;
-    margin-bottom: 18px;
-    text-transform: uppercase;
-    position: relative;
-  }
-  .info-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 14px;
-    position: relative;
-  }
-  .info-icon {
-    font-size: 1.5rem;
-    min-width: 36px;
-    text-align: center;
-    animation: iconPulse 2s ease-in-out infinite;
-  }
-  @keyframes iconPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-  }
-  .info-text strong {
-    font-family: 'Cinzel Decorative', cursive;
-    font-size: 0.6rem;
-    color: var(--gold);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 3px;
-  }
-  .info-text span {
-    font-size: 0.95rem;
-    color: var(--white);
-    line-height: 1.4;
-  }
-
-  /* ===== CUENTA REGRESIVA ===== */
-  .countdown-section {
-    margin: 15px;
-    text-align: center;
-  }
-  .countdown-title {
-    font-family: 'Great Vibes', cursive;
-    font-size: 1.8rem;
-    color: var(--gold);
-    margin-bottom: 15px;
-    text-shadow: 0 0 20px rgba(255,215,0,0.8);
-    animation: shimmer 2s ease-in-out infinite;
-  }
-  .countdown-grid {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-  }
-  .countdown-box {
-    flex: 1;
-    max-width: 80px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,215,0,0.3);
-    border-radius: 16px;
-    padding: 12px 5px;
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-  }
-  .countdown-box::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 50%;
-    background: rgba(255,255,255,0.03);
-    border-radius: 16px 16px 0 0;
-  }
-  .countdown-number {
-    font-family: 'Cinzel Decorative', cursive;
-    font-size: 2rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, #FFD700, #FF6EB4);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    display: block;
-    line-height: 1;
-    animation: numberPop 0.3s ease;
-  }
-  .countdown-label {
-    font-size: 0.55rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.6);
-    margin-top: 4px;
-    display: block;
-  }
-
-  /* ===== MAPA ===== */
-  .map-section {
-    margin: 15px;
-  }
-  .map-section h3 {
-    font-family: 'Cinzel Decorative', cursive;
-    font-size: 0.65rem;
-    letter-spacing: 4px;
-    color: var(--gold);
-    text-align: center;
-    margin-bottom: 12px;
-    text-transform: uppercase;
-  }
-  .map-container {
-    border-radius: 20px;
-    overflow: hidden;
-    border: 2px solid rgba(255,215,0,0.3);
-    box-shadow: 0 0 30px rgba(255,110,180,0.2);
-  }
-  .map-container iframe {
-    width: 100%;
-    height: 250px;
-    border: none;
-    display: block;
-  }
-  .map-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 10px;
-    background: linear-gradient(135deg, #FF6EB4, #CE93D8);
-    border: none;
-    border-radius: 50px;
-    padding: 12px 25px;
-    color: white;
-    font-family: 'Cinzel Decorative', cursive;
-    font-size: 0.6rem;
-    letter-spacing: 2px;
-    cursor: pointer;
-    text-decoration: none;
-    text-transform: uppercase;
-    width: 100%;
-    box-shadow: 0 5px 20px rgba(255,110,180,0.4);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .map-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,110,180,0.6); }
-
-  /* ===== MÚSICA ===== */
-  .music-note {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #FFD700, #FF6EB4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.4rem;
-    cursor: pointer;
-    z-index: 1000;
-    box-shadow: 0 4px 20px rgba(255,215,0,0.5);
-    animation: musicBounce 1s ease-in-out infinite;
-    border: none;
-  }
-  @keyframes musicBounce {
-    0%, 100% { transform: scale(1) rotate(-5deg); }
-    50% { transform: scale(1.1) rotate(5deg); }
-  }
-
-  /* ===== BOTÓN WHATSAPP ===== */
-  .whatsapp-section {
-    margin: 20px 15px 10px;
-    text-align: center;
-  }
-  .whatsapp-title {
-    font-family: 'Great Vibes', cursive;
-    font-size: 1.6rem;
-    color: var(--gold);
-    margin-bottom: 15px;
-    text-shadow: 0 0 20px rgba(255,215,0,0.7);
-  }
-  .whatsapp-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    background: linear-gradient(135deg, #25D366, #128C7E);
-    border: none;
-    border-radius: 50px;
-    padding: 16px 30px;
-    color: white;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: none;
-    width: 100%;
-    box-shadow: 0 6px 25px rgba(37,211,102,0.5);
-    transition: transform 0.2s, box-shadow 0.2s;
-    animation: waBounce 2s ease-in-out infinite;
-  }
-  @keyframes waBounce {
-    0%, 100% { transform: scale(1); box-shadow: 0 6px 25px rgba(37,211,102,0.4); }
-    50% { transform: scale(1.03); box-shadow: 0 8px 35px rgba(37,211,102,0.7); }
-  }
-  .whatsapp-btn:hover { transform: scale(1.05); }
-
-  /* ===== FOOTER ===== */
-  .footer {
-    text-align: center;
-    padding: 20px;
-    font-family: 'Great Vibes', cursive;
-    font-size: 1.3rem;
-    color: rgba(255,215,0,0.7);
-    text-shadow: 0 0 10px rgba(255,215,0,0.4);
-  }
-
-  /* ===== PARTÍCULAS NOMBRE ===== */
-  .name-particle {
-    position: absolute;
-    pointer-events: none;
-    border-radius: 50%;
-    animation: nameParticle var(--np-dur, 1.5s) ease-out forwards;
-    z-index: 20;
-  }
-  @keyframes nameParticle {
-    0%   { transform: translate(0,0) scale(1); opacity: 1; }
-    100% { transform: translate(var(--np-x, 0px), var(--np-y, -60px)) scale(0); opacity: 0; }
-  }
-
-  /* ===== ANIMACIÓN DE ENTRADA ===== */
-  .fade-in {
-    opacity: 0;
-    animation: fadeInUp 0.8s ease forwards;
-    animation-delay: var(--delay, 0.2s);
-  }
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ===== CROWN DECORATION ===== */
-  .crown-row {
-    text-align: center;
-    font-size: 1.4rem;
-    letter-spacing: 5px;
-    margin: 5px 0;
-    animation: shimmer 3s ease-in-out infinite;
-  }
-
-
-  /* ===== RESPONSIVE COMPLETO ===== */
-
-  /* Tamaños base con clamp para fluidez en cualquier pantalla */
-  .invitation {
-    max-width: 480px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 0 40px;
-  }
-
-  /* Tablet / pantallas medianas (481px – 768px) */
-  @media (min-width: 481px) and (max-width: 768px) {
-    .invitation { max-width: 520px; }
-    .child-name { font-size: clamp(2.8rem, 8vw, 3.6rem); }
-    .years-text { font-size: clamp(1rem, 3vw, 1.3rem); }
-    .castle-svg { width: 280px; height: 237px; }
-    .crossfade-stage { width: 250px; height: 340px; }
-    .countdown-number { font-size: 2.4rem; }
-    .countdown-box { max-width: 90px; padding: 15px 5px; }
-    .event-section { margin: 10px 20px; padding: 28px 25px; }
-    .map-section { margin: 15px 20px; }
-    .whatsapp-section { margin: 20px 20px 10px; }
-    .info-text span { font-size: 1.05rem; }
-  }
-
-  /* Escritorio / pantallas grandes (769px+) */
-  @media (min-width: 769px) {
-    .invitation { max-width: 560px; }
-    .child-name { font-size: clamp(3.2rem, 6vw, 4rem); }
-    .years-text { font-size: 1.3rem; }
-    .subtitle-you-are-invited { font-size: 1.7rem; }
-    .princess-title { font-size: 0.8rem; letter-spacing: 6px; }
-    .castle-svg { width: 300px; height: 254px; }
-    .crossfade-stage { width: 270px; height: 370px; }
-    .countdown-number { font-size: 2.6rem; }
-    .countdown-box { max-width: 100px; padding: 16px 8px; }
-    .countdown-grid { gap: 14px; }
-    .event-section { margin: 10px 25px; padding: 30px 28px; }
-    .map-section { margin: 15px 25px; }
-    .map-container iframe { height: 300px; }
-    .whatsapp-section { margin: 20px 25px 10px; }
-    .whatsapp-btn { font-size: 1.1rem; padding: 18px 35px; }
-    .info-text span { font-size: 1.1rem; }
-    .info-icon { font-size: 1.7rem; }
-    .music-note { width: 56px; height: 56px; font-size: 1.5rem; }
-  }
-
-  /* Móvil pequeño (menos de 360px) */
-  @media (max-width: 360px) {
-    .child-name { font-size: 2.4rem; }
-    .years-text { font-size: 0.95rem; letter-spacing: 1px; }
-    .princess-title { font-size: 0.6rem; letter-spacing: 3px; }
-    .subtitle-you-are-invited { font-size: 1.2rem; }
-    .crossfade-stage { width: 175px; height: 240px; }
-    .castle-svg { width: 210px; height: 178px; }
-    .countdown-number { font-size: 1.6rem; }
-    .countdown-box { padding: 10px 3px; }
-    .countdown-label { font-size: 0.48rem; }
-    .event-section { margin: 10px 10px; padding: 18px 14px; }
-    .map-section { margin: 15px 10px; }
-    .whatsapp-section { margin: 20px 10px 10px; }
-    .whatsapp-btn { font-size: 0.88rem; padding: 13px 18px; }
-    .info-text span { font-size: 0.85rem; }
-    .info-icon { font-size: 1.2rem; min-width: 28px; }
-    .crown-row { font-size: 1.1rem; letter-spacing: 3px; }
-    .divider { font-size: 1.4rem; letter-spacing: 5px; }
-    .music-note { width: 42px; height: 42px; font-size: 1.1rem; top: 10px; right: 10px; }
-  }
-
-  /* Móvil estándar (361px – 480px) */
-  @media (min-width: 361px) and (max-width: 480px) {
-    .child-name { font-size: clamp(2.6rem, 9vw, 3.2rem); }
-    .crossfade-stage { width: clamp(180px, 55vw, 220px); height: clamp(240px, 72vw, 300px); }
-  }
-</style>
-</head>
-<body>
-
-<!-- FUEGOS ARTIFICIALES -->
-<canvas id="fireworks-canvas"></canvas>
-
-<!-- FONDO MÁGICO -->
-<div class="bg-magic"></div>
-<div class="stars" id="stars"></div>
-<div class="sparkles-container" id="sparkles"></div>
-
-<!-- BOTÓN MÚSICA -->
-<button class="music-note" id="music-btn" onclick="toggleMusic()" title="Música">🎵</button>
-
-<!-- AUDIO (música de princesas Disney) -->
-<audio id="princess-audio" loop>
-  <source src="musica.mp3" type="audio/mpeg">
-</audio>
-
-<!-- CONTENIDO PRINCIPAL -->
-<div class="invitation" id="main-invitation" style="opacity:0; pointer-events:none; transition: opacity 1.2s ease;">
-
-  <!-- CASTILLO -->
-  <div class="castle-header fade-in" style="--delay:0.3s">
-    <svg class="castle-svg" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="wallGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#CE93D8"/>
-          <stop offset="100%" stop-color="#6A1B9A"/>
-        </linearGradient>
-        <linearGradient id="towerGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#E040FB"/>
-          <stop offset="100%" stop-color="#7B1FA2"/>
-        </linearGradient>
-        <linearGradient id="roofGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#FFD700"/>
-          <stop offset="100%" stop-color="#FF6EB4"/>
-        </linearGradient>
-        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#1a0035" stop-opacity="0"/>
-          <stop offset="100%" stop-color="#1a0035" stop-opacity="0"/>
-        </linearGradient>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="2.5" result="blur"/>
-          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-        <filter id="strongGlow">
-          <feGaussianBlur stdDeviation="4" result="blur"/>
-          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-      </defs>
-
-      <!-- ===== TORRES LATERALES PEQUEÑAS ===== -->
-      <!-- Torre izq pequeña -->
-      <rect x="2" y="110" width="22" height="90" fill="url(#wallGrad)" rx="2"/>
-      <rect x="2" y="100" width="22" height="14" fill="#7B1FA2" rx="1"/>
-      <!-- Almenas torre izq pequeña -->
-      <rect x="2" y="96" width="5" height="8" fill="#9C27B0" rx="1"/>
-      <rect x="10" y="96" width="5" height="8" fill="#9C27B0" rx="1"/>
-      <rect x="18" y="96" width="5" height="8" fill="#9C27B0" rx="1"/>
-      <!-- Techo torre izq pequeña -->
-      <polygon points="2,100 13,72 24,100" fill="url(#roofGrad)" filter="url(#glow)"/>
-      <line x1="13" y1="72" x2="13" y2="65" stroke="#FFD700" stroke-width="1.5"/>
-      <polygon points="13,65 20,69 13,73" fill="#FF6EB4"/>
-      <!-- Ventana -->
-      <ellipse cx="13" cy="125" rx="5" ry="7" fill="#FFD700" opacity="0.85" filter="url(#glow)"/>
-
-      <!-- Torre izq mediana -->
-      <rect x="28" y="90" width="30" height="110" fill="url(#towerGrad)" rx="2"/>
-      <rect x="28" y="78" width="30" height="16" fill="#7B1FA2" rx="1"/>
-      <!-- Almenas -->
-      <rect x="28" y="73" width="7" height="10" fill="#9C27B0" rx="1"/>
-      <rect x="38" y="73" width="7" height="10" fill="#9C27B0" rx="1"/>
-      <rect x="48" y="73" width="7" height="10" fill="#9C27B0" rx="1"/>
-      <!-- Techo -->
-      <polygon points="28,78 43,45 58,78" fill="url(#roofGrad)" filter="url(#glow)"/>
-      <line x1="43" y1="45" x2="43" y2="37" stroke="#FFD700" stroke-width="1.5"/>
-      <polygon points="43,37 51,41 43,46" fill="#FF80AB"/>
-      <!-- Ventanas -->
-      <ellipse cx="43" cy="105" rx="7" ry="9" fill="#FFD700" opacity="0.85" filter="url(#glow)"/>
-      <ellipse cx="43" cy="130" rx="5" ry="6" fill="#FFD700" opacity="0.6"/>
-
-      <!-- Torre der pequeña -->
-      <rect x="236" y="110" width="22" height="90" fill="url(#wallGrad)" rx="2"/>
-      <rect x="236" y="100" width="22" height="14" fill="#7B1FA2" rx="1"/>
-      <rect x="236" y="96" width="5" height="8" fill="#9C27B0" rx="1"/>
-      <rect x="244" y="96" width="5" height="8" fill="#9C27B0" rx="1"/>
-      <rect x="252" y="96" width="5" height="8" fill="#9C27B0" rx="1"/>
-      <polygon points="236,100 247,72 258,100" fill="url(#roofGrad)" filter="url(#glow)"/>
-      <line x1="247" y1="72" x2="247" y2="65" stroke="#FFD700" stroke-width="1.5"/>
-      <polygon points="247,65 254,69 247,73" fill="#FF6EB4"/>
-      <ellipse cx="247" cy="125" rx="5" ry="7" fill="#FFD700" opacity="0.85" filter="url(#glow)"/>
-
-      <!-- Torre der mediana -->
-      <rect x="202" y="90" width="30" height="110" fill="url(#towerGrad)" rx="2"/>
-      <rect x="202" y="78" width="30" height="16" fill="#7B1FA2" rx="1"/>
-      <rect x="202" y="73" width="7" height="10" fill="#9C27B0" rx="1"/>
-      <rect x="212" y="73" width="7" height="10" fill="#9C27B0" rx="1"/>
-      <rect x="222" y="73" width="7" height="10" fill="#9C27B0" rx="1"/>
-      <polygon points="202,78 217,45 232,78" fill="url(#roofGrad)" filter="url(#glow)"/>
-      <line x1="217" y1="45" x2="217" y2="37" stroke="#FFD700" stroke-width="1.5"/>
-      <polygon points="217,37 225,41 217,46" fill="#FF80AB"/>
-      <ellipse cx="217" cy="105" rx="7" ry="9" fill="#FFD700" opacity="0.85" filter="url(#glow)"/>
-      <ellipse cx="217" cy="130" rx="5" ry="6" fill="#FFD700" opacity="0.6"/>
-
-      <!-- ===== CUERPO PRINCIPAL ===== -->
-      <rect x="58" y="120" width="144" height="100" fill="url(#wallGrad)" rx="3"/>
-      <!-- Franja decorativa -->
-      <rect x="58" y="118" width="144" height="8" fill="#7B1FA2"/>
-      <!-- Almenas cuerpo -->
-      <rect x="58" y="110" width="10" height="13" fill="#9C27B0" rx="1"/>
-      <rect x="74" y="110" width="10" height="13" fill="#9C27B0" rx="1"/>
-      <rect x="90" y="110" width="10" height="13" fill="#9C27B0" rx="1"/>
-      <rect x="106" y="110" width="10" height="13" fill="#9C27B0" rx="1"/>
-      <rect x="122" y="110" width="10" height="13" fill="#9C27B0" rx="1"/>
-      <rect x="138" y="110" width="10" height="13" fill="#9C27B0" rx="1"/>
-      <rect x="154" y="110" width="10" height="13" fill="#9C27B0" rx="1"/>
-      <rect x="170" y="110" width="10" height="13" fill="#9C27B0" rx="1"/>
-      <rect x="186" y="110" width="10" height="13" fill="#9C27B0" rx="1"/>
-
-      <!-- ===== TORRE CENTRAL GRANDE ===== -->
-      <rect x="95" y="60" width="70" height="160" fill="url(#towerGrad)" rx="3"/>
-      <rect x="90" y="48" width="80" height="18" fill="#6A1B9A" rx="2"/>
-      <!-- Almenas torre central -->
-      <rect x="90" y="40" width="11" height="14" fill="#9C27B0" rx="2"/>
-      <rect x="105" y="40" width="11" height="14" fill="#9C27B0" rx="2"/>
-      <rect x="120" y="40" width="11" height="14" fill="#9C27B0" rx="2"/>
-      <rect x="135" y="40" width="11" height="14" fill="#9C27B0" rx="2"/>
-      <rect x="150" y="40" width="11" height="14" fill="#9C27B0" rx="2"/>
-      <!-- Techo torre central -->
-      <polygon points="90,48 130,5 170,48" fill="url(#roofGrad)" filter="url(#strongGlow)"/>
-      <!-- Mástil y bandera -->
-      <line x1="130" y1="5" x2="130" y2="-5" stroke="#FFD700" stroke-width="2"/>
-      <polygon points="130,-5 148,2 130,9" fill="#FF6EB4" filter="url(#glow)"/>
-      <!-- Brillos en el techo -->
-      <circle cx="130" cy="5" r="4" fill="white" opacity="0.95" filter="url(#strongGlow)"/>
-      <circle cx="108" cy="30" r="2" fill="white" opacity="0.7"/>
-      <circle cx="152" cy="30" r="2" fill="white" opacity="0.7"/>
-
-      <!-- Ventanas torre central -->
-      <ellipse cx="130" cy="85" rx="10" ry="13" fill="#FFD700" opacity="0.9" filter="url(#glow)"/>
-      <ellipse cx="130" cy="115" rx="8" ry="10" fill="#FFD700" opacity="0.7"/>
-      <!-- Detalles ventana arco -->
-      <path d="M120,85 Q130,72 140,85" fill="none" stroke="#FFD700" stroke-width="1.5" opacity="0.5"/>
-
-      <!-- ===== PUERTA PRINCIPAL ===== -->
-      <path d="M113,220 L113,178 Q130,162 147,178 L147,220 Z" fill="#1a0035"/>
-      <path d="M115,220 L115,179 Q130,165 145,179 L145,220 Z" fill="#2a0050"/>
-      <!-- Herraje puerta -->
-      <circle cx="130" cy="195" r="3" fill="#FFD700" opacity="0.8"/>
-
-      <!-- Ventanas cuerpo principal -->
-      <ellipse cx="85" cy="148" rx="9" ry="11" fill="#FFD700" opacity="0.8" filter="url(#glow)"/>
-      <ellipse cx="175" cy="148" rx="9" ry="11" fill="#FFD700" opacity="0.8" filter="url(#glow)"/>
-      <path d="M76,148 Q85,137 94,148" fill="none" stroke="#FFD700" stroke-width="1.2" opacity="0.5"/>
-      <path d="M166,148 Q175,137 184,148" fill="none" stroke="#FFD700" stroke-width="1.2" opacity="0.5"/>
-
-      <!-- ===== DETALLES DECORATIVOS ===== -->
-      <!-- Estrellas flotantes -->
-      <circle cx="20" cy="50" r="2.5" fill="#FFD700" filter="url(#glow)" opacity="0.9"/>
-      <circle cx="240" cy="55" r="2" fill="#FFD700" filter="url(#glow)" opacity="0.9"/>
-      <circle cx="50" cy="30" r="1.5" fill="#FF80AB" opacity="0.8"/>
-      <circle cx="210" cy="35" r="1.5" fill="#FF80AB" opacity="0.8"/>
-      <circle cx="10" cy="80" r="1.8" fill="white" opacity="0.7"/>
-      <circle cx="250" cy="75" r="1.8" fill="white" opacity="0.7"/>
-
-      <!-- Destellos en forma de estrella -->
-      <path d="M35,15 L37,10 L39,15 L44,17 L39,19 L37,24 L35,19 L30,17 Z" fill="#FFD700" opacity="0.8" filter="url(#glow)"/>
-      <path d="M220,20 L222,15 L224,20 L229,22 L224,24 L222,29 L220,24 L215,22 Z" fill="#FF80AB" opacity="0.8" filter="url(#glow)"/>
-      <path d="M5,135 L6.5,131 L8,135 L12,136.5 L8,138 L6.5,142 L5,138 L1,136.5 Z" fill="#CE93D8" opacity="0.7"/>
-      <path d="M250,130 L251.5,126 L253,130 L257,131.5 L253,133 L251.5,137 L250,133 L246,131.5 Z" fill="#CE93D8" opacity="0.7"/>
-
-      <!-- Nubes de luz bajo el castillo -->
-      <ellipse cx="130" cy="218" rx="90" ry="8" fill="#9C27B0" opacity="0.25"/>
-      <ellipse cx="130" cy="218" rx="60" ry="5" fill="#E040FB" opacity="0.15"/>
-    </svg>
-  </div>
-
-  <!-- TÍTULO -->
-  <div class="main-title fade-in" style="--delay:0.5s">
-    <span class="subtitle-you-are-invited">✨ Estás invitada a celebrar ✨</span>
-    <span class="child-name" id="child-name-text">Arleth Garcia Tablas</span>
-    <span class="years-text">🎀 Sus 4 Años 🎀</span>
-    <span class="princess-title">✦ Una Celebración de Princesas ✦</span>
-  </div>
-
-  <div class="crown-row fade-in" style="--delay:0.7s">👑 💎 👑 💎 👑</div>
-  <div class="divider fade-in" style="--delay:0.8s">✨ 🌸 ✨ 🌸 ✨</div>
-
-  <!-- PRINCESAS CROSSFADE -->
-  <div class="princesses-section fade-in" style="--delay:0.9s">
-    <p class="princesses-title">✦ Las Princesas te Invitan ✦</p>
-    <div class="crossfade-stage" id="crossfade-stage">
-
-      <div class="cf-card cf-active">
-        <div class="princess-card card-ariel" style="--float-dur:4s;--float-delay:0s;--shine-dur:4s">
-          <img class="princess-img" src="https://raw.githubusercontent.com/apaloco200-dev/Invitacion_Arleth/main/Ariel.jpeg" alt="Ariel" loading="lazy"/>
-          <div class="princess-overlay"></div>
-          <div class="sparkle-ring"></div>
-          <div class="princess-name">✨ Ariel ✨</div>
-          <div class="card-shimmer"></div>
-        </div>
-      </div>
-
-      <div class="cf-card">
-        <div class="princess-card card-aurora" style="--float-dur:4.5s;--float-delay:0.5s;--shine-dur:3.5s">
-          <img class="princess-img" src="https://raw.githubusercontent.com/apaloco200-dev/Invitacion_Arleth/main/Aurora.jpeg" alt="Aurora" loading="lazy"/>
-          <div class="princess-overlay"></div>
-          <div class="sparkle-ring"></div>
-          <div class="princess-name">✨ Aurora ✨</div>
-          <div class="card-shimmer"></div>
-        </div>
-      </div>
-
-      <div class="cf-card">
-        <div class="princess-card card-bella" style="--float-dur:3.8s;--float-delay:1s;--shine-dur:5s">
-          <img class="princess-img" src="https://raw.githubusercontent.com/apaloco200-dev/Invitacion_Arleth/main/Bella.jpeg" alt="Bella" loading="lazy"/>
-          <div class="princess-overlay"></div>
-          <div class="sparkle-ring"></div>
-          <div class="princess-name">✨ Bella ✨</div>
-          <div class="card-shimmer"></div>
-        </div>
-      </div>
-
-      <div class="cf-card">
-        <div class="princess-card card-snowwhite" style="--float-dur:4.2s;--float-delay:1.5s;--shine-dur:3.8s">
-          <img class="princess-img" src="https://raw.githubusercontent.com/apaloco200-dev/Invitacion_Arleth/main/Blancanieves.jpeg" alt="Blancanieves" loading="lazy"/>
-          <div class="princess-overlay"></div>
-          <div class="sparkle-ring"></div>
-          <div class="princess-name">✨ Blancanieves ✨</div>
-          <div class="card-shimmer"></div>
-        </div>
-      </div>
-
-      <div class="cf-card">
-        <div class="princess-card card-elsa" style="--float-dur:4.8s;--float-delay:2s;--shine-dur:4.5s">
-          <img class="princess-img" src="https://raw.githubusercontent.com/apaloco200-dev/Invitacion_Arleth/main/Elsa.jpeg" alt="Elsa" loading="lazy"/>
-          <div class="princess-overlay"></div>
-          <div class="sparkle-ring"></div>
-          <div class="princess-name">✨ Elsa ✨</div>
-          <div class="card-shimmer"></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- CUENTA REGRESIVA -->
-  <div class="countdown-section fade-in" style="--delay:1s">
-    <div class="countdown-title">⏰ Faltan...</div>
-    <div class="countdown-grid">
-      <div class="countdown-box">
-        <span class="countdown-number" id="days">00</span>
-        <span class="countdown-label">Días</span>
-      </div>
-      <div class="countdown-box">
-        <span class="countdown-number" id="hours">00</span>
-        <span class="countdown-label">Horas</span>
-      </div>
-      <div class="countdown-box">
-        <span class="countdown-number" id="minutes">00</span>
-        <span class="countdown-label">Min</span>
-      </div>
-      <div class="countdown-box">
-        <span class="countdown-number" id="seconds">00</span>
-        <span class="countdown-label">Seg</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="divider fade-in" style="--delay:1.1s">💎 ✨ 💎 ✨ 💎</div>
-
-  <!-- INFO DEL EVENTO -->
-  <div class="event-section fade-in" style="--delay:1.2s">
-    <h3>✦ Detalles del Gran Evento ✦</h3>
-    <div class="info-item">
-      <span class="info-icon">📅</span>
-      <div class="info-text">
-        <strong>Fecha Mágica</strong>
-        <span>Sábado 16 de Mayo de 2026</span>
-      </div>
-    </div>
-    <div class="info-item">
-      <span class="info-icon">⏰</span>
-      <div class="info-text">
-        <strong>Hora del Encanto</strong>
-        <span>3:00 PM</span>
-      </div>
-    </div>
-    <div class="info-item">
-      <span class="info-icon">🏰</span>
-      <div class="info-text">
-        <strong>Lugar del Sueño</strong>
-        <span>Jardín de Eventos <strong style="color:var(--gold);font-family:'Cinzel Decorative',cursive;font-size:0.85rem;letter-spacing:2px;">LA CARRETA</strong></span>
-      </div>
-    </div>
-    <div class="info-item">
-      <span class="info-icon">📍</span>
-      <div class="info-text">
-        <strong>Dirección</strong>
-        <span>Pedro Moreno 18, San Cristóbal Centro, 55000 Ecatepec de Morelos, Méx.</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- MAPA -->
-  <div class="map-section fade-in" style="--delay:1.4s">
-    <h3>✦ 🗺️ Cómo Llegar al Reino ✦</h3>
-    <div class="map-container">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3756.8!2d-98.9191!3d19.6013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f3b2a1c0a001%3A0x1!2sPedro+Moreno+18%2C+San+Crist%C3%B3bal+Centro%2C+Ecatepec+de+Morelos+55000!5e0!3m2!1ses-419!2smx!4v1710000000000!5m2!1ses-419!2smx"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="Jardín de Eventos LA CARRETA - Pedro Moreno 18 Ecatepec"
-      ></iframe>
-    </div>
-    <a 
-      href="https://maps.google.com/?q=Pedro+Moreno+18,+San+Cristobal+Centro,+55000+Ecatepec+de+Morelos,+Mexico" 
-      target="_blank"
-      class="map-btn"
-    >
-      🗺️ Abrir en Google Maps
-    </a>
-  </div>
-
-  <div class="divider fade-in" style="--delay:1.5s">🌟 👑 🌟 👑 🌟</div>
-
-  <!-- CONFIRMACIÓN WHATSAPP -->
-  <div class="whatsapp-section fade-in" style="--delay:1.6s">
-    <div class="whatsapp-title">💌 ¡Confirma tu Asistencia! 💌</div>
-    <a 
-      href="https://wa.me/525545468540?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20la%20fiesta%20de%20de%20Arleth%20Garcia%20Tablas%20el%2016%20de%20mayo%20de%202026%20🎀✨👑"
-      target="_blank"
-      class="whatsapp-btn"
-    >
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-      </svg>
-      ¡Confirmar Asistencia! 🎀
-    </a>
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer fade-in" style="--delay:1.8s">
-    ✨ Con todo el amor del mundo ✨<br>
-    <span style="font-size:0.75rem;font-family:'Lato';letter-spacing:3px;color:rgba(255,215,0,0.5);text-shadow:none;">¡Te esperamos! 🏰💎👑</span>
-  </div>
-
-</div>
-
 <script>
-// ===== GENERAR ESTRELLAS =====
-const starsEl = document.getElementById('stars');
-for (let i = 0; i < 120; i++) {
-  const s = document.createElement('div');
-  s.className = 'star';
-  const size = Math.random() * 3 + 0.5;
-  s.style.cssText = `
-    width:${size}px; height:${size}px;
-    left:${Math.random()*100}%; top:${Math.random()*100}%;
-    --d:${2+Math.random()*4}s;
-    --delay:${Math.random()*5}s;
-  `;
-  starsEl.appendChild(s);
+/* =====================================================
+   ✨ ULTRA MOBILE PERFORMANCE ENGINE v1.0
+   Optimización automática para celulares
+   ===================================================== */
+
+(function(){
+
+/* -------------------------------
+   1. ACTIVAR GPU ACCELERATION
+--------------------------------*/
+const gpuCSS = document.createElement("style");
+gpuCSS.innerHTML = `
+*,
+*::before,
+*::after{
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
 }
 
-// ===== GENERAR PARTÍCULAS =====
-const sparklesEl = document.getElementById('sparkles');
-const sparkleEmojis = ['✨','⭐','🌟','💫','🌸','💎','👑','🎀','💕','🌺','✦','🦋'];
-for (let i = 0; i < 30; i++) {
-  const sp = document.createElement('div');
-  sp.className = 'sparkle';
-  sp.textContent = sparkleEmojis[Math.floor(Math.random() * sparkleEmojis.length)];
-  const dur = 7 + Math.random() * 8;
-  sp.style.cssText = `
-    left:${Math.random()*100}%;
-    --dur:${dur}s;
-    --delay:${Math.random()*dur}s;
-    font-size:${0.8+Math.random()*1.2}rem;
-  `;
-  sparklesEl.appendChild(sp);
+.gpu{
+  transform:translateZ(0);
+  will-change:transform,opacity;
 }
 
-// ===== CUENTA REGRESIVA =====
-function updateCountdown() {
-  const target = new Date('2026-05-16T15:00:00');
-  const now = new Date();
-  const diff = target - now;
-  if (diff <= 0) {
-    document.getElementById('days').textContent = '¡Es';
-    document.getElementById('hours').textContent = 'Hoy!';
-    document.getElementById('minutes').textContent = '🎉';
-    document.getElementById('seconds').textContent = '🎊';
-    return;
-  }
-  const d = Math.floor(diff / 86400000);
-  const h = Math.floor((diff % 86400000) / 3600000);
-  const m = Math.floor((diff % 3600000) / 60000);
-  const s = Math.floor((diff % 60000) / 1000);
-  document.getElementById('days').textContent = String(d).padStart(2,'0');
-  document.getElementById('hours').textContent = String(h).padStart(2,'0');
-  document.getElementById('minutes').textContent = String(m).padStart(2,'0');
-  document.getElementById('seconds').textContent = String(s).padStart(2,'0');
+.sparkle,.star,.princess-card,.castle-svg,
+.music-note,.whatsapp-btn,.cf-card,.princess-img{
+  transform:translate3d(0,0,0);
+  will-change:transform,opacity;
 }
-updateCountdown();
-setInterval(updateCountdown, 1000);
 
-// ===== PANTALLA DE BIENVENIDA (fuerza interacción para audio) =====
-const welcomeOverlay = document.createElement('div');
-welcomeOverlay.id = 'welcome-overlay';
-welcomeOverlay.style.cssText = `
-  position:fixed; inset:0; z-index:99999;
-  background: linear-gradient(135deg, #1a0035, #7700bb, #FF66FF, #cc44ee, #2a0050);
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  cursor:pointer; transition: opacity 1s ease;
+.pause-anim *{
+  animation-play-state:paused !important;
+}
+
+/* modo ahorro automático */
+.low-performance *{
+  animation-duration: calc(var(--animSpeed,1) * 1.6s) !important;
+}
+
+.low-performance .castle-svg{
+  filter: drop-shadow(0 0 10px rgba(255,215,0,.4));
+}
+
+.low-performance .event-section{
+  backdrop-filter: blur(5px);
+}
 `;
-welcomeOverlay.innerHTML = `
-  <div style="text-align:center; padding:30px; animation: pulse 1.5s ease-in-out infinite;">
-    <div style="margin-bottom:10px;">
-      <svg viewBox="0 0 260 230" width="180" height="155" xmlns="http://www.w3.org/2000/svg" style="overflow:visible; filter:drop-shadow(0 0 18px rgba(255,215,0,0.9)) drop-shadow(0 0 35px rgba(255,110,180,0.5));">
-        <defs>
-          <linearGradient id="wg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E040FB"/><stop offset="100%" stop-color="#6A1B9A"/></linearGradient>
-          <linearGradient id="rg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFD700"/><stop offset="100%" stop-color="#FF6EB4"/></linearGradient>
-        </defs>
-        <!-- Torres laterales pequeñas -->
-        <rect x="2" y="115" width="22" height="85" fill="url(#wg2)" rx="2"/>
-        <polygon points="2,115 13,85 24,115" fill="url(#rg2)"/>
-        <line x1="13" y1="85" x2="13" y2="77" stroke="#FFD700" stroke-width="2"/>
-        <polygon points="13,77 21,81 13,86" fill="#FF80AB"/>
-        <ellipse cx="13" cy="133" rx="5" ry="6" fill="#FFD700" opacity="0.9"/>
-        <rect x="236" y="115" width="22" height="85" fill="url(#wg2)" rx="2"/>
-        <polygon points="236,115 247,85 258,115" fill="url(#rg2)"/>
-        <line x1="247" y1="85" x2="247" y2="77" stroke="#FFD700" stroke-width="2"/>
-        <polygon points="247,77 255,81 247,86" fill="#FF80AB"/>
-        <ellipse cx="247" cy="133" rx="5" ry="6" fill="#FFD700" opacity="0.9"/>
-        <!-- Torres medianas -->
-        <rect x="28" y="95" width="30" height="105" fill="url(#wg2)" rx="2"/>
-        <rect x="28" y="82" width="30" height="16" fill="#6A1B9A" rx="1"/>
-        <rect x="28" y="75" width="7" height="10" fill="#9C27B0" rx="1"/><rect x="38" y="75" width="7" height="10" fill="#9C27B0" rx="1"/><rect x="48" y="75" width="7" height="10" fill="#9C27B0" rx="1"/>
-        <polygon points="28,82 43,48 58,82" fill="url(#rg2)"/>
-        <line x1="43" y1="48" x2="43" y2="39" stroke="#FFD700" stroke-width="1.5"/>
-        <polygon points="43,39 52,43 43,49" fill="#FF80AB"/>
-        <ellipse cx="43" cy="112" rx="7" ry="9" fill="#FFD700" opacity="0.85"/>
-        <rect x="202" y="95" width="30" height="105" fill="url(#wg2)" rx="2"/>
-        <rect x="202" y="82" width="30" height="16" fill="#6A1B9A" rx="1"/>
-        <rect x="202" y="75" width="7" height="10" fill="#9C27B0" rx="1"/><rect x="212" y="75" width="7" height="10" fill="#9C27B0" rx="1"/><rect x="222" y="75" width="7" height="10" fill="#9C27B0" rx="1"/>
-        <polygon points="202,82 217,48 232,82" fill="url(#rg2)"/>
-        <line x1="217" y1="48" x2="217" y2="39" stroke="#FFD700" stroke-width="1.5"/>
-        <polygon points="217,39 226,43 217,49" fill="#FF80AB"/>
-        <ellipse cx="217" cy="112" rx="7" ry="9" fill="#FFD700" opacity="0.85"/>
-        <!-- Cuerpo principal -->
-        <rect x="58" y="125" width="144" height="75" fill="url(#wg2)" rx="3"/>
-        <rect x="58" y="115" width="144" height="14" fill="#6A1B9A"/>
-        <rect x="60" y="109" width="9" height="11" fill="#9C27B0" rx="1"/><rect x="74" y="109" width="9" height="11" fill="#9C27B0" rx="1"/><rect x="88" y="109" width="9" height="11" fill="#9C27B0" rx="1"/><rect x="102" y="109" width="9" height="11" fill="#9C27B0" rx="1"/><rect x="116" y="109" width="9" height="11" fill="#9C27B0" rx="1"/><rect x="130" y="109" width="9" height="11" fill="#9C27B0" rx="1"/><rect x="144" y="109" width="9" height="11" fill="#9C27B0" rx="1"/><rect x="158" y="109" width="9" height="11" fill="#9C27B0" rx="1"/><rect x="172" y="109" width="9" height="11" fill="#9C27B0" rx="1"/><rect x="186" y="109" width="9" height="11" fill="#9C27B0" rx="1"/>
-        <!-- Torre central -->
-        <rect x="95" y="65" width="70" height="135" fill="url(#wg2)" rx="3"/>
-        <rect x="90" y="52" width="80" height="18" fill="#6A1B9A" rx="2"/>
-        <rect x="90" y="43" width="11" height="14" fill="#9C27B0" rx="2"/><rect x="105" y="43" width="11" height="14" fill="#9C27B0" rx="2"/><rect x="120" y="43" width="11" height="14" fill="#9C27B0" rx="2"/><rect x="135" y="43" width="11" height="14" fill="#9C27B0" rx="2"/><rect x="150" y="43" width="11" height="14" fill="#9C27B0" rx="2"/>
-        <polygon points="90,52 130,8 170,52" fill="url(#rg2)"/>
-        <circle cx="130" cy="9" r="4" fill="white" opacity="0.95"/>
-        <line x1="130" y1="9" x2="130" y2="-2" stroke="#FFD700" stroke-width="2"/>
-        <polygon points="130,-2 148,5 130,12" fill="#FF6EB4"/>
-        <!-- Ventanas torre central -->
-        <ellipse cx="130" cy="88" rx="10" ry="13" fill="#FFD700" opacity="0.9"/>
-        <ellipse cx="130" cy="118" rx="7" ry="9" fill="#FFD700" opacity="0.7"/>
-        <!-- Puerta -->
-        <path d="M113,200 L113,162 Q130,146 147,162 L147,200 Z" fill="#1a0035"/>
-        <!-- Ventanas cuerpo -->
-        <ellipse cx="85" cy="150" rx="9" ry="11" fill="#FFD700" opacity="0.8"/>
-        <ellipse cx="175" cy="150" rx="9" ry="11" fill="#FFD700" opacity="0.8"/>
-        <!-- Destellos -->
-        <path d="M20,55 L22,49 L24,55 L30,57 L24,59 L22,65 L20,59 L14,57 Z" fill="#FFD700" opacity="0.9"/>
-        <path d="M230,60 L232,54 L234,60 L240,62 L234,64 L232,70 L230,64 L224,62 Z" fill="#FF80AB" opacity="0.9"/>
-        <circle cx="10" cy="90" r="2" fill="white" opacity="0.8"/>
-        <circle cx="250" cy="85" r="2" fill="white" opacity="0.8"/>
-        <circle cx="50" cy="35" r="1.5" fill="#FFD700" opacity="0.7"/>
-        <circle cx="210" cy="38" r="1.5" fill="#FFD700" opacity="0.7"/>
-        <!-- Sombra base -->
-        <ellipse cx="130" cy="200" rx="90" ry="7" fill="#9C27B0" opacity="0.3"/>
-      </svg>
-    </div>
-    <div style="
-      font-family:'Cinzel Decorative',cursive;
-      font-size:1.5rem;
-      font-weight:700;
-      color:#00FFFF;
-      text-shadow: 0 0 15px #00FFFF, 0 0 35px #00FFFF, 0 2px 6px rgba(0,0,0,0.9);
-      letter-spacing:3px;
-      margin-bottom:10px;
-      text-transform:uppercase;">
-      ✨ Toca para Abrir ✨
-    </div>
-    <div style="
-      font-family:'Great Vibes',cursive;
-      font-size:2rem;
-      color:#FFFDE7;
-      text-shadow: 0 0 20px #FFD700, 0 0 40px rgba(255,215,0,0.6), 0 2px 6px rgba(0,0,0,0.9);
-      margin-bottom:22px;">
-      la invitación mágica
-    </div>
-    <div style="font-size:2.5rem; letter-spacing:10px; animation: bounce 1s ease-in-out infinite;
-      filter:drop-shadow(0 0 8px #fff);">
-      👑💎👑
-    </div>
-  </div>
-  <style>
-    @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.04)} }
-    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-  </style>
-`;
-document.body.appendChild(welcomeOverlay);
+document.head.appendChild(gpuCSS);
 
-// Fondo oscuro secundario que se queda durante los fuegos
-const darkCover = document.createElement('div');
-darkCover.style.cssText = `
-  position:fixed; inset:0; z-index:9998;
-  background: linear-gradient(135deg, #1a0035, #7700bb, #FF66FF, #cc44ee, #2a0050);
-  pointer-events:none; opacity:0; transition: opacity 0.5s ease;
-`;
-document.body.appendChild(darkCover);
 
-// ===== MÚSICA =====
-let playing = false;
-const audio = document.getElementById('princess-audio');
-const musicBtn = document.getElementById('music-btn');
-
-function startMusic() {
-  audio.volume = 0;
-  audio.play().then(() => {
-    playing = true;
-    musicBtn.textContent = '🎵';
-    // Fade in suave
-    let vol = 0;
-    const fadeIn = setInterval(() => {
-      vol = Math.min(vol + 0.05, 0.7);
-      audio.volume = vol;
-      if (vol >= 0.7) clearInterval(fadeIn);
-    }, 150);
-  }).catch(() => {});
-}
-
-function toggleMusic() {
-  if (playing) {
-    audio.pause();
-    musicBtn.textContent = '🔇';
-    playing = false;
-  } else {
-    audio.play().catch(() => {});
-    musicBtn.textContent = '🎵';
-    playing = true;
-  }
-}
-
-// Al tocar la pantalla de bienvenida → arrancar todo
-welcomeOverlay.addEventListener('click', () => {
-  startMusic();
-
-  // 1. Mostrar fondo oscuro (darkCover) para que tape la invitación mientras hay fuegos
-  darkCover.style.opacity = '1';
-
-  // 2. Quitar el overlay de bienvenida inmediatamente (sin transición larga)
-  welcomeOverlay.style.opacity = '0';
-  setTimeout(() => welcomeOverlay.remove(), 600);
-
-  // 3. Lanzar fuegos artificiales sobre el fondo oscuro
-  setTimeout(() => {
-    fireworksActive = true;
-    fireworkTimer = 0;
-    animateFireworks();
-    for (let i = 0; i < 8; i++) setTimeout(launchFirework, i * 350);
-  }, 300);
-
-  // 4. Después de los fuegos (2 seg): fade out + revelar invitación
-  setTimeout(() => {
-    // Detener nuevos fuegos
-    fireworksActive = false;
-
-    // Fade out suave del canvas
-    let fwAlpha = 1;
-    const fadeFireworks = setInterval(() => {
-      fwAlpha = Math.max(fwAlpha - 0.05, 0);
-      canvas.style.opacity = fwAlpha;
-      if (fwAlpha <= 0) {
-        clearInterval(fadeFireworks);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        canvas.style.opacity = 1;
-      }
-    }, 40);
-
-    // Fade out del fondo oscuro
-    darkCover.style.transition = 'opacity 1.2s ease';
-    darkCover.style.opacity = '0';
-    setTimeout(() => darkCover.remove(), 1300);
-
-    // Fade in de la invitación
-    const inv = document.getElementById('main-invitation');
-    inv.style.pointerEvents = 'auto';
-    inv.style.opacity = '1';
-  }, 2300);
+/* -------------------------------
+   2. AUTO PAUSE (cuando cambia app)
+--------------------------------*/
+document.addEventListener("visibilitychange",()=>{
+  document.body.classList.toggle(
+    "pause-anim",
+    document.hidden
+  );
 });
 
-// ===== FUEGOS ARTIFICIALES =====
-const canvas = document.getElementById('fireworks-canvas');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+
+/* -------------------------------
+   3. DETECTOR DE FPS REAL
+   (la magia principal)
+--------------------------------*/
+let frames = 0;
+let lastTime = performance.now();
+let fps = 60;
+
+function fpsMonitor(time){
+  frames++;
+
+  if(time > lastTime + 1000){
+    fps = frames;
+    frames = 0;
+    lastTime = time;
+    adaptivePerformance(fps);
+  }
+
+  requestAnimationFrame(fpsMonitor);
+}
+
+requestAnimationFrame(fpsMonitor);
+
+
+/* -------------------------------
+   4. MOTOR ADAPTATIVO INTELIGENTE
+--------------------------------*/
+let lowMode = false;
+
+function adaptivePerformance(currentFPS){
+
+  // si el celular empieza a sufrir
+  if(currentFPS < 40 && !lowMode){
+    lowMode = true;
+    enableLowPerformanceMode();
+  }
+
+  // si vuelve a estar fluido
+  if(currentFPS > 52 && lowMode){
+    lowMode = false;
+    disableLowPerformanceMode();
+  }
+}
+
+
+/* -------------------------------
+   5. MODO BAJO CONSUMO (invisible)
+--------------------------------*/
+function enableLowPerformanceMode(){
+
+  document.body.classList.add("low-performance");
+
+  // reducir partículas activas
+  document.querySelectorAll(".sparkle")
+    .forEach((el,i)=>{
+      if(i % 2 === 0) el.style.display="none";
+    });
+
+  // reducir estrellas
+  document.querySelectorAll(".star")
+    .forEach((el,i)=>{
+      if(i % 3 === 0) el.style.opacity=".4";
+    });
+
+  // limitar canvas FPS si existe
+  if(window.fireworksLoop){
+      window.fireworksFPS = 25;
+  }
+
+  console.log("⚡ Ultra Mode: ahorro activado");
+}
+
+
+/* -------------------------------
+   6. RESTAURAR CALIDAD
+--------------------------------*/
+function disableLowPerformanceMode(){
+
+  document.body.classList.remove("low-performance");
+
+  document.querySelectorAll(".sparkle")
+    .forEach(el=>el.style.display="");
+
+  document.querySelectorAll(".star")
+    .forEach(el=>el.style.opacity="");
+
+  if(window.fireworksLoop){
+      window.fireworksFPS = 60;
+  }
+
+  console.log("✨ Ultra Mode: calidad restaurada");
+}
+
+
+/* -------------------------------
+   7. OPTIMIZAR SCROLL MOBILE
+--------------------------------*/
+let ticking=false;
+
+window.addEventListener("scroll",()=>{
+  if(!ticking){
+    requestAnimationFrame(()=>{
+      document.body.style.setProperty(
+        "--scrollY",
+        window.scrollY
+      );
+      ticking=false;
+    });
+    ticking=true;
+  }
+},{passive:true});
+
+
+/* -------------------------------
+   8. OPTIMIZAR IMÁGENES AUTOMÁTICO
+--------------------------------*/
+document.querySelectorAll("img").forEach(img=>{
+  img.loading="lazy";
+  img.decoding="async";
 });
 
-class Particle {
-  constructor(x, y, color) {
-    this.x = x; this.y = y;
-    this.color = color;
-    const angle = Math.random() * Math.PI * 2;
-    const speed = Math.random() * 5 + 1.5;
-    this.vx = Math.cos(angle) * speed;
-    this.vy = Math.sin(angle) * speed;
-    this.life = 1;
-    // Decay más lento = partículas más suaves y duraderas
-    this.decay = Math.random() * 0.012 + 0.006;
-    // Tamaño base positivo garantizado
-    this.size = Math.random() * 3 + 1.5;
-    this.gravity = 0.06;
-  }
-  update() {
-    this.x += this.vx; this.y += this.vy;
-    this.vy += this.gravity;
-    this.vx *= 0.98; this.vy *= 0.98;
-    this.life -= this.decay;
-  }
-  draw() {
-    // ✅ CORRECCIÓN: garantizar radio siempre positivo
-    const radius = Math.max(0.1, this.size * this.life);
-    if (this.life <= 0) return;
-    ctx.save();
-    ctx.globalAlpha = Math.max(0, this.life);
-    ctx.fillStyle = this.color;
-    ctx.shadowColor = this.color;
-    ctx.shadowBlur = 8;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, radius, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.restore();
-  }
-}
 
-const colors = ['#FFD700','#FF6EB4','#CE93D8','#4FC3F7','#FF5252','#69F0AE','#FFEB3B','#FF80AB','#EA80FC','#82B1FF'];
-let particles = [];
-let fireworksActive = false;
-let fireworkTimer = 0;
-let animFrameId = null;
+/* -------------------------------
+   9. REDUCIR CALOR EN ANDROID
+--------------------------------*/
+if(navigator.hardwareConcurrency &&
+   navigator.hardwareConcurrency <=4){
 
-function launchFirework() {
-  const x = Math.random() * canvas.width;
-  const y = Math.random() * canvas.height * 0.55;
-  const color = colors[Math.floor(Math.random() * colors.length)];
-  const count = 55 + Math.floor(Math.random() * 35);
-  for (let i = 0; i < count; i++) {
-    particles.push(new Particle(x, y, color));
-  }
-}
-
-function animateFireworks() {
-  if (!fireworksActive) {
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    return;
-  }
-  // Trail suave con transparencia mayor = estelas más etéreas
-  ctx.fillStyle = 'rgba(0,0,0,0.18)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  fireworkTimer++;
-  if (fireworkTimer % 22 === 0) launchFirework();
-  particles = particles.filter(p => p.life > 0);
-  particles.forEach(p => { p.update(); p.draw(); });
-  animFrameId = requestAnimationFrame(animateFireworks);
+   document.body.classList.add("low-performance");
 }
 
 
-// ===== PARTÍCULAS EN EL NOMBRE =====
-(function() {
-  const nameEl = document.getElementById('child-name-text');
-  if (!nameEl) return;
-
-  const colors = ['#FFD700','#FF6EB4','#CE93D8','#4FC3F7','#FFFFFF','#FF80AB','#FFE082','#B39DDB'];
-
-  function burst() {
-    const rect = nameEl.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2 + window.scrollY;
-    const container = nameEl.parentElement;
-    const contRect = container.getBoundingClientRect();
-
-    for (let i = 0; i < 18; i++) {
-      const p = document.createElement('div');
-      p.className = 'name-particle';
-      const size = Math.random() * 7 + 3;
-      const angle = Math.random() * Math.PI * 2;
-      const dist = Math.random() * 80 + 30;
-      const dur = Math.random() * 1 + 1;
-      const color = colors[Math.floor(Math.random() * colors.length)];
-      const px = cx - contRect.left - contRect.scrollLeft;
-      const py = cy - contRect.top + window.scrollY - window.scrollY;
-
-      p.style.cssText = `
-        width:${size}px; height:${size}px;
-        background:${color};
-        left:${rect.left - contRect.left + Math.random()*rect.width}px;
-        top:${rect.top - contRect.top + window.scrollY + Math.random()*rect.height}px;
-        --np-x:${Math.cos(angle)*dist}px;
-        --np-y:${Math.sin(angle)*dist - 40}px;
-        --np-dur:${dur}s;
-        box-shadow: 0 0 ${size}px ${color};
-      `;
-      container.style.position = 'relative';
-      container.appendChild(p);
-      setTimeout(() => p.remove(), dur * 1000 + 100);
-    }
+/* -------------------------------
+   10. PREVENIR MEMORY LEAKS
+--------------------------------*/
+setInterval(()=>{
+  if(window.gc){
+    try{ window.gc(); }catch(e){}
   }
+},30000);
 
-  // Burst cada 4 segundos automáticamente
-  setTimeout(burst, 1500);
-  setInterval(burst, 4000);
+
 })();
-
-// ===== CROSSFADE AUTOMÁTICO DE PRINCESAS =====
-(function() {
-  const cards = document.querySelectorAll('#crossfade-stage .cf-card');
-  let current = 0;
-  setInterval(() => {
-    cards[current].classList.remove('cf-active');
-    current = (current + 1) % cards.length;
-    cards[current].classList.add('cf-active');
-  }, 3000);
-})();
-
 </script>
-</body>
-</html>
